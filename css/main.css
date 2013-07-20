@@ -20,6 +20,7 @@ html, body {
     border-right-width: 10px;
     box-sizing: border-box;
     overflow: auto;
+    text-align: center;
 }
 
 #content{
@@ -54,13 +55,6 @@ html, body {
     overflow: auto;
 }
 
-.middlediv{
-    display: -webkit-box;
-    -webkit-box-orient:horizontal;
-    -webkit-box-pack:center;
-    -webkit-box-align:center;
-}
-
 .templateBox{
     width: 90%;
     height: 125px;
@@ -72,6 +66,12 @@ html, body {
 .templateInnerBox{
     width: 70%;
     height:70%;
+    text-align: left;
+}
+
+.templateEditBox{
+    width:100%;
+    height: 100%;
 }
 
 

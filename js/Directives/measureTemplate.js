@@ -11,19 +11,18 @@ directives["measuretemplate"] = function(){
     return {
         restrict: "A",
         scope: {
-            object:"="
+            object:"=",
+            editMeasure: "&"
         },
-
         template:
             "<div class='templateInnerBox'>" +
-            "<p></p>" +
             "<p>ID : {{object.id}} </p>" +
             "<p style='white-space:nowrap;'>Name : {{object.name}} </p>" +
-            "<button style='float:left;'>Add</button>" +
-            "<button style='float:right;'>Edit</button>" +
+            "<div class='btn' style='float:left;'>Add</div>" +
+            "<div class='btn' style='float:right;' ng-click='editMeasure({{object}})'>Edit</div>" +
             "</div>",
 
-        link: function(scope){
+        link: function(scope, element, attrs){
 
         }
 

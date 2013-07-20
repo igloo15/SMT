@@ -1,0 +1,18 @@
+.navbar-logo {
+    float: left;
+    width: 100px;
+    height: 70px;
+}
+
+.navbar-tabs{
+    margin: auto;
+    font-size: 140%;
+    width: 400px;
+    height: 50px;
+}
+
+.navbar-buttons{
+    float: left;
+    width: 900px;
+    height: 70px;
+}

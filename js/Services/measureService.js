@@ -10,7 +10,13 @@
 app.service('measureService', function(){
     var self = this;
     self.measures = [];
+    self.measureIndex = 0;
+    self.selectedMeasure = null;
     self.addMeasure =  function(measure){
         self.measures.push(measure);
+        self.measureIndex++;
+    }
+    self.selectMeasure = function(measure){
+        self.selectedMeasure = measure;
     }
 })
