@@ -2,14 +2,14 @@
     <div class="mainview-sidebar">
         <p class="mainview-sidebar-header">Components</p>
         <div class="components-group" >
-           <div class="component-box" draggable="true">
-               <div class="middlediv component-box-inner">
+           <div id="measureComp" class="component-box" draggable="true" ondragstart="drag(event)">
+               <div  class="middlediv component-box-inner">
                    <div>MC</div>
                </div>
            </div>
         </div>
     </div>
-    <div class="mainview-workspace" dropzone="">
+    <div class="mainview-workspace" ondrop="drop(event)" ondragover="allowDrop(event)">
 
     </div>
     <div class="mainview-properties">

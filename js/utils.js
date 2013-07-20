@@ -6,6 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var componentIndex = 0;
 
 function allowDrop(ev)
 {
@@ -21,5 +22,7 @@ function drop(ev)
 {
     ev.preventDefault();
     var data=ev.dataTransfer.getData("Text");
-    ev.target.appendChild(document.getElementById(data));
+    $('#'+data).clone().attr('id', data+''+componentIndex).attr('ondragstart','').attr('draggable','').removeClass('component-box').addClass('jsplumb-box').appendTo(ev.target);
+    jsPlumb.draggable($('#'+data+''+componentIndex));
+    componentIndex++;
 }
