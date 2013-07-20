@@ -7,5 +7,8 @@
  */
 
 
-app.controller(controllers);
+'use strict';
 
+/* Controllers */
+
+angular.module('measure.controllers', [])

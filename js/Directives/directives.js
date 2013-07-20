@@ -7,4 +7,14 @@
  */
 
 
-app.directive(directives);
+'use strict';
+
+/* Directives */
+
+
+angular.module('measure.directives', []).
+    directive('appVersion', ['version', function(version) {
+        return function(scope, elm, attrs) {
+            elm.text(version);
+        };
+    }]);
