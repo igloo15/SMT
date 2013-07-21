@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7cea0f4-3730-444d-80e1-cbdccc162dda" name="Default" comment="drag and drop initial work">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jquery.panzoom.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/definition.html" afterPath="$PROJECT_DIR$/partials/definition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" afterPath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/mainview.css" afterPath="$PROJECT_DIR$/css/mainview.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Model/measure.js" afterPath="$PROJECT_DIR$/js/Model/measure.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Services/measureService.js" afterPath="$PROJECT_DIR$/js/Services/measureService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
+    <list default="true" id="b7cea0f4-3730-444d-80e1-cbdccc162dda" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SystemMeasureTool.iws" />
@@ -25,7 +17,7 @@
     <file path="/controllers.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367185951576" ignored="false" />
     <file path="/app.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347779815" ignored="false" />
     <file path="/index.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374359903450" ignored="false" />
-    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374434419777" ignored="false" />
+    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374440525551" ignored="false" />
     <file path="/navbar.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347298274" ignored="false" />
     <file path="/definition.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374433927236" ignored="false" />
     <file path="/data.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374353266347" ignored="false" />
@@ -554,7 +546,11 @@
       <created>1374358315617</created>
       <updated>1374358315617</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update model prepare for connections">
+      <created>1374440531922</created>
+      <updated>1374440531922</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -643,7 +639,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="drag and drop initial work" />
+    <option name="LAST_COMMIT_MESSAGE" value="update model prepare for connections" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -661,6 +657,7 @@
     <MESSAGE value="Added controls and cleaned up templates" />
     <MESSAGE value="basic layout and initial components" />
     <MESSAGE value="drag and drop initial work" />
+    <MESSAGE value="update model prepare for connections" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
