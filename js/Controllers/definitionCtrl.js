@@ -8,7 +8,12 @@
 
 'use strict'
 app.controller('definitionCtrl', ['$scope', function($scope){
-
+    /*$("#panArea").panzoom({
+        $zoomIn: $(".zoom-in"),
+        $zoomOut: $(".zoom-out"),
+        $zoomRange: $(".zoom-range"),
+        $reset: $(".reset")
+    });*/
 
 
 
