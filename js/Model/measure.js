@@ -272,6 +272,23 @@ function MeasureComputation(name, operator, functionName){
     }
 
     self.type = MeasureComputationType;
+
+
+    self.form = {
+        operator: new Form('Operator', 'operator', 'text', true, null),
+        functionName: new Form('Function Name', 'functionName', 'text', true, null),
+        name: new Form('Name', 'name', 'text', true, null)
+    }
+
+    return self;
+}
+
+function MeasureComputationForm(){
+    var self = this;
+    self.operator = new Form('Operator', 'operator', 'text', true, null);
+    self.functionName = new Form('Function Name', 'functionName', 'text', true, null);
+    self.name = new Form('Name', 'name', 'text', true, null);
+
     return self;
 }
 
@@ -300,4 +317,13 @@ function DataRequest(){
     self.location = "";
 
     return self;
+}
+
+function Form(label, model, widget, required, options){
+    var self = this;
+    self.label = label;
+    self.model = model;
+    self.widget = widget;
+    self.required = required;
+    self.options = options;
 }

@@ -12,17 +12,17 @@ app.directive("measurecomputation", function(){
         restrict: "E",
         scope: {
             object:"=",
-            selectItem: "&"
+            selectitem: "&"
         },
         template:
-            //"<div class='measurecomp' ng-click='selectItem({{object}})'>" +
+            "<div class='measurecomp' ng-click='selectitem({item:object})'>" +
             //"<div class='input-bar'></div>" +
             "<p>Measure Computation </p>" +
-            "<p style=''>Operator : {{object.operator}} </p>" +
-            "<p style=''>Function Name : {{object.functionName}} </p>",
+            "<p style=''>Operator : {{object.id}} </p>" +
+            "<p style=''>Function Name : {{object.functionName}} </p>"+
 
             //"<div class='output-bar'></div>" +
-            //"</div>",
+            "</div>",
 
         link: function(scope, element, attrs){
             element.appendTo($('.mainview-workspace'));

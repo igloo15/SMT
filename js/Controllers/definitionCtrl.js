@@ -17,9 +17,14 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
 
     $scope.measureservice = measureService;
 
-    $scope.selectItem = function(){
-        console.log(item.id);
+    $scope.callSelectItem = function(item){
+        $scope.selectedForm = item.form;
+        $scope.selectedItem = item;
     };
+
+    $scope.selectedItem = {};
+    $scope.selectedForm = {};
+
 
     $scope.drawAbleItems = [];
 
@@ -34,7 +39,7 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
             $scope.drawAbleItems.push(item);
 
             item.location = new Location(ev.pageX, ev.pageY);
-            element = $compile("<measurecomputation class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' ng-click='selectItem()'></measurecomputation>")($scope);
+            element = $compile("<measurecomputation class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></measurecomputation>")($scope);
 
         }
 

@@ -9,11 +9,25 @@
            </div>
         </div>
     </div>
-    <div class="mainview-workspace" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="mainview-workspace" ondrop="drop(event)" ondragover="allowDrop(event)" >
 
 
     </div>
     <div class="mainview-properties">
         <p class="mainview-properties-header">Properties</p>
+        <div class="property-group">
+            <div ng-repeat="element in selectedForm" >
+                <div ng-switch on="element.widget">
+
+                    <div ng-switch-when="text" class="controls controls-row">
+                        <span class="add-on span2 property-float">{{element.label}}</span>
+                        <input class="span2 property-float" type="text" ng-model="selectedItem[element.model]" ng-required="element.required"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 </div>

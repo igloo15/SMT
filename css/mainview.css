@@ -61,11 +61,22 @@
 .mainview-properties-header{
     color: #6E7B82;
     font-size: 200%;
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
 }
 
 
+
+.property-group{
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.property-float{
+    float: left;
+}
 
 
 .title {

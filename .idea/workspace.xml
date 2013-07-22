@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7cea0f4-3730-444d-80e1-cbdccc162dda" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Directives/plumbDirectives.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Services/plumbService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/workspace.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/Services/functionService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/definition.html" afterPath="$PROJECT_DIR$/partials/definition.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" afterPath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/mainview.css" afterPath="$PROJECT_DIR$/css/mainview.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Model/measure.js" afterPath="$PROJECT_DIR$/js/Model/measure.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Services/measureService.js" afterPath="$PROJECT_DIR$/js/Services/measureService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Directives/plumbDirectives.js" afterPath="$PROJECT_DIR$/js/Directives/plumbDirectives.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/workspace.css" afterPath="$PROJECT_DIR$/css/workspace.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SystemMeasureTool.iws" />
@@ -19,7 +16,7 @@
     <file path="/measureService.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374440712148" ignored="false" />
     <file path="/measureTemplate.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367193622686" ignored="false" />
     <file path="/measureCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367194076606" ignored="false" />
-    <file path="/measure.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374446423742" ignored="false" />
+    <file path="/measure.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374475736769" ignored="false" />
     <file path="/templateList.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367188291664" ignored="false" />
     <file path="/measureTemplateCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367184851560" ignored="false" />
     <file path="/main.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374352715177" ignored="false" />
@@ -27,18 +24,19 @@
     <file path="/controllers.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367185951576" ignored="false" />
     <file path="/app.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347779815" ignored="false" />
     <file path="/index.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374460688174" ignored="false" />
-    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374467842369" ignored="false" />
+    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374467913174" ignored="false" />
     <file path="/navbar.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347298274" ignored="false" />
-    <file path="/definition.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374444896403" ignored="false" />
+    <file path="/definition.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374477223206" ignored="false" />
     <file path="/data.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374353266347" ignored="false" />
     <file path="/template.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374352872391" ignored="false" />
-    <file path="/definitionCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374467344669" ignored="false" />
+    <file path="/definitionCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374476320693" ignored="false" />
     <file path="/navCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374351276811" ignored="false" />
-    <file path="/mainview.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374465732190" ignored="false" />
+    <file path="/mainview.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374477203856" ignored="false" />
     <file path="/utils.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374462034061" ignored="false" />
     <file path="/plumbService.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374466832770" ignored="false" />
-    <file path="/plumbDirectives.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374467255466" ignored="false" />
-    <file path="/workspace.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374465566184" ignored="false" />
+    <file path="/plumbDirectives.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374470027118" ignored="false" />
+    <file path="/workspace.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374476638294" ignored="false" />
+    <file path="/functionService.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374477721806" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +50,25 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="measure.js" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="268" column="54" selection-start="5771" selection-end="5771" vertical-scroll-proportion="0.07325383">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SystemMeasureTool" />
@@ -61,10 +78,19 @@
       <file leaf-file-name="definitionCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Controllers/definitionCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="66" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
+            <state line="52" column="53" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#160#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="definition.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/partials/definition.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="38" selection-start="714" selection-end="769" vertical-scroll-proportion="-11.769231">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,18 +98,7 @@
       <file leaf-file-name="plumbService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Services/plumbService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="60" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#160#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="48" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
+            <state line="27" column="101" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#160#0" expanded="false" />
               </folding>
@@ -104,23 +119,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="measureTemplateEdit.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplateEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1367253399373" expanded="false" signature="450:469" placeholder="..." />
-                <marker date="1367253399373" expanded="false" signature="557:568" placeholder="..." />
-                <marker date="1367253399373" expanded="false" signature="624:636" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="plumbDirectives.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Directives/plumbDirectives.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="43" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+            <state line="17" column="65" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#160#0" expanded="false" />
               </folding>
@@ -131,7 +133,7 @@
       <file leaf-file-name="workspace.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/workspace.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="9" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+            <state line="33" column="16" selection-start="633" selection-end="633" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,7 +142,27 @@
       <file leaf-file-name="mainview.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/mainview.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="27" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0">
+            <state line="44" column="26" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functionService.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/Services/functionService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="36" selection-start="645" selection-end="645" vertical-scroll-proportion="0.2924731">
+              <folding>
+                <element signature="e#0#160#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="measureService.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Services/measureService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="38" selection-start="162" selection-end="2052" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -150,15 +172,6 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state line="31" column="5" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-17.384615">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="measure.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="31" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.33333334">
               <folding />
             </state>
           </provider>
@@ -187,22 +200,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/Controllers/navCtrl.js" />
         <option value="$PROJECT_DIR$/css/mainview.coffee" />
         <option value="$PROJECT_DIR$/css/main.css" />
         <option value="$PROJECT_DIR$/partials/template.html" />
         <option value="$PROJECT_DIR$/partials/data.html" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/Services/measureService.js" />
-        <option value="$PROJECT_DIR$/js/Model/measure.js" />
-        <option value="$PROJECT_DIR$/partials/definition.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/utils.js" />
-        <option value="$PROJECT_DIR$/css/mainview.css" />
-        <option value="$PROJECT_DIR$/css/workspace.css" />
         <option value="$PROJECT_DIR$/js/Services/plumbService.js" />
         <option value="$PROJECT_DIR$/js/Directives/plumbDirectives.js" />
+        <option value="$PROJECT_DIR$/js/Model/measure.js" />
         <option value="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" />
+        <option value="$PROJECT_DIR$/css/workspace.css" />
+        <option value="$PROJECT_DIR$/partials/definition.html" />
+        <option value="$PROJECT_DIR$/css/mainview.css" />
+        <option value="$PROJECT_DIR$/js/Services/functionService.js" />
       </list>
     </option>
   </component>
@@ -558,7 +571,11 @@
       <created>1374440537343</created>
       <updated>1374440537343</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="jsplumb connections">
+      <created>1374467918986</created>
+      <updated>1374467918986</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -583,9 +600,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1216" height="1936" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18851998" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18851998" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -675,13 +692,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="126" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/filters/filters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="34" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
@@ -689,23 +699,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Services/measureService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="44" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="36" selection-start="244" selection-end="254" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/partials/definition.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="71" selection-start="132" selection-end="132" vertical-scroll-proportion="-1.3076923">
           <folding />
         </state>
       </provider>
@@ -726,36 +722,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/mainview.css">
+    <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplateEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="27" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Services/plumbService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="60" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#160#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Controllers/definitionCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="66" selection-start="613" selection-end="613" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#160#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Directives/plumbDirectives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="43" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#160#0" expanded="false" />
+            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -771,13 +744,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplateEdit.js">
+    <entry file="file://$PROJECT_DIR$/js/Services/plumbService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="27" column="101" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1367253399373" expanded="false" signature="450:469" placeholder="..." />
-            <marker date="1367253399373" expanded="false" signature="557:568" placeholder="..." />
-            <marker date="1367253399373" expanded="false" signature="624:636" placeholder="..." />
+            <element signature="e#0#160#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Directives/plumbDirectives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="65" selection-start="410" selection-end="410" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#160#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -789,17 +769,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/workspace.css">
+    <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="9" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+        <state line="268" column="54" selection-start="5771" selection-end="5771" vertical-scroll-proportion="0.07325383">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
+    <entry file="file://$PROJECT_DIR$/js/Controllers/definitionCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="31" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.33333334">
+        <state line="52" column="53" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#160#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/workspace.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="16" selection-start="633" selection-end="633" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/definition.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="38" selection-start="714" selection-end="769" vertical-scroll-proportion="-11.769231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/mainview.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="26" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Services/measureService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="38" selection-start="162" selection-end="2052" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Services/functionService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="36" selection-start="645" selection-end="645" vertical-scroll-proportion="0.2924731">
+          <folding>
+            <element signature="e#0#160#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
