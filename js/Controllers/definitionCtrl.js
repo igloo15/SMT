@@ -7,7 +7,7 @@
  */
 
 'use strict'
-app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumbService', function($scope, $compile, measureService, plumbService){
+app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumbService', 'functionService', function($scope, $compile, measureService, plumbService, functionService){
     /*$("#panArea").panzoom({
         $zoomIn: $(".zoom-in"),
         $zoomOut: $(".zoom-out"),
@@ -16,6 +16,8 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
     });*/
 
     $scope.measureservice = measureService;
+
+    $scope.functionservice = functionService;
 
     $scope.callSelectItem = function(item){
         $scope.selectedForm = item.form;
@@ -32,7 +34,7 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
         var item;
         var element;
         if(data == MeasureComputationType){
-            item = measureService.createComputation();
+            item = measureService.createComputation($scope.functionservice);
 
             var index = $scope.drawAbleItems.length;
 

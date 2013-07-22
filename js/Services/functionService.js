@@ -31,6 +31,27 @@ app.service('functionService', function(){
         return self.functionPlugins;
     };
 
+    self.getFunctionPluginNames = function(){
+        var items = [];
+
+        angular.forEach(self.functionPlugins, function(value, key){
+            items.push({key:key, name:value.name})
+        });
+
+        return items;
+    }
+
+    self.getFunctionPluginOperators = function(name){
+        var items = [];
+        if(name !== "")   {
+            angular.forEach(self.functionPlugins[name].operators, function(value, key){
+                items.push({key:value, name:value})
+            });
+        }
+
+        return items;
+    }
+
 
     return self;
 });

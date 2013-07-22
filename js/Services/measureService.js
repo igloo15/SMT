@@ -41,8 +41,8 @@ app.service('measureService', function(){
         return newParameter;
     };
 
-    self.createComputation = function(){
-        var newComp = new MeasureComputation("", "","");
+    self.createComputation = function(functionService){
+        var newComp = new MeasureComputation(functionService);
         self.computations.push(newComp);
         return newComp;
     };

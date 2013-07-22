@@ -251,13 +251,15 @@ function Input(){
     return self;
 }
 
-function MeasureComputation(name, operator, functionName){
+function MeasureComputation(functionService){
     var self = this;
-    self.operator = operator;
-    self.functionName = functionName;
-    self.name = name;
+    self.operator = "";
+    self.functionName = "";
+    self.name = "";
     self.operands = [];
     self.id = GetModelId();
+    self.Guid = generateGuid();
+    self.functionPlugins = functionService;
     self.location = "";
 
     self.addInput = function(input, index){
@@ -275,19 +277,12 @@ function MeasureComputation(name, operator, functionName){
 
 
     self.form = {
-        operator: new Form('Operator', 'operator', 'text', true, null),
-        functionName: new Form('Function Name', 'functionName', 'text', true, null),
-        name: new Form('Name', 'name', 'text', true, null)
+        name: new Form('Name', 'name', 'text', true, null, null),
+        guid: new Form('Guid', 'Guid', 'read', false, null, null),
+        operator: new Form('Operator', 'operator', 'functionSelect', true, null, 'functionName'),
+        functionName: new Form('Function Name', 'functionName', 'select', true, self.functionPlugins.getFunctionPluginNames(), null)
+
     }
-
-    return self;
-}
-
-function MeasureComputationForm(){
-    var self = this;
-    self.operator = new Form('Operator', 'operator', 'text', true, null);
-    self.functionName = new Form('Function Name', 'functionName', 'text', true, null);
-    self.name = new Form('Name', 'name', 'text', true, null);
 
     return self;
 }
@@ -319,11 +314,12 @@ function DataRequest(){
     return self;
 }
 
-function Form(label, model, widget, required, options){
+function Form(label, model, widget, required, options, observable){
     var self = this;
     self.label = label;
     self.model = model;
     self.widget = widget;
     self.required = required;
     self.options = options;
+    self.observable = observable;
 }

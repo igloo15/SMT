@@ -18,7 +18,7 @@ app.directive("measurecomputation", function(){
             "<div class='measurecomp' ng-click='selectitem({item:object})'>" +
             //"<div class='input-bar'></div>" +
             "<p>Measure Computation </p>" +
-            "<p style=''>Operator : {{object.id}} </p>" +
+            "<p style=''>Operator : {{object.operator}} </p>" +
             "<p style=''>Function Name : {{object.functionName}} </p>"+
 
             //"<div class='output-bar'></div>" +
