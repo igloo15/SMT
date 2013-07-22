@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7cea0f4-3730-444d-80e1-cbdccc162dda" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/partials/definition.html" afterPath="$PROJECT_DIR$/partials/definition.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" afterPath="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Services/functionService.js" afterPath="$PROJECT_DIR$/js/Services/functionService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Model/measure.js" afterPath="$PROJECT_DIR$/js/Model/measure.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Services/measureService.js" afterPath="$PROJECT_DIR$/js/Services/measureService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/Directives/plumbDirectives.js" afterPath="$PROJECT_DIR$/js/Directives/plumbDirectives.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SystemMeasureTool.iws" />
@@ -16,7 +10,7 @@
     <file path="/measureService.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374479157571" ignored="false" />
     <file path="/measureTemplate.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367193622686" ignored="false" />
     <file path="/measureCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367194076606" ignored="false" />
-    <file path="/measure.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374480087230" ignored="false" />
+    <file path="/measure.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374481348926" ignored="false" />
     <file path="/templateList.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367188291664" ignored="false" />
     <file path="/measureTemplateCtrl.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367184851560" ignored="false" />
     <file path="/main.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374352715177" ignored="false" />
@@ -24,7 +18,7 @@
     <file path="/controllers.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1367185951576" ignored="false" />
     <file path="/app.js" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347779815" ignored="false" />
     <file path="/index.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374478190251" ignored="false" />
-    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374477752217" ignored="false" />
+    <file path="/Dummy.txt" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374481028085" ignored="false" />
     <file path="/navbar.css" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374347298274" ignored="false" />
     <file path="/definition.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374480364116" ignored="false" />
     <file path="/data.html" changelist="b7cea0f4-3730-444d-80e1-cbdccc162dda" time="1374353266347" ignored="false" />
@@ -58,7 +52,7 @@
             <file leaf-file-name="measure.js" pinned="false" current="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="281" column="8" selection-start="6049" selection-end="6138" vertical-scroll-proportion="0.3781223">
+                  <state line="24" column="4" selection-start="587" selection-end="587" vertical-scroll-proportion="0.33333334">
                     <folding />
                   </state>
                 </provider>
@@ -75,17 +69,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="definitionCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Controllers/definitionCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="71" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#160#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="definition.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/partials/definition.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,10 +78,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plumbService.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plumbService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Services/plumbService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="11" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.38494936">
+            <state line="75" column="11" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#160#0" expanded="false" />
               </folding>
@@ -106,14 +89,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="measureTemplate.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplate.js">
+      <file leaf-file-name="angular-scenario.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/angular/angular-scenario.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="48" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
+            <state line="4707" column="16" selection-start="126452" selection-end="126452" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="measureCtrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/Controllers/measureCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="38" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="9" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.3326713">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filters.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/filters/filters.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="50" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/utils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="20" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1367254948645" expanded="false" signature="454:473" placeholder="..." />
-                <marker date="1367254948645" expanded="false" signature="543:554" placeholder="..." />
-                <marker date="1367254948645" expanded="false" signature="606:618" placeholder="..." />
+                <element signature="e#0#160#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -139,15 +156,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainview.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/mainview.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="26" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="functionService.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Services/functionService.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -155,24 +163,6 @@
               <folding>
                 <element signature="e#0#160#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="measureService.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/Services/measureService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="53" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="45" selection-start="2813" selection-end="2813" vertical-scroll-proportion="-37.76923">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -211,11 +201,11 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/Controllers/definitionCtrl.js" />
         <option value="$PROJECT_DIR$/js/Services/measureService.js" />
-        <option value="$PROJECT_DIR$/js/Model/measure.js" />
         <option value="$PROJECT_DIR$/partials/definition.html" />
         <option value="$PROJECT_DIR$/js/Directives/plumbDirectives.js" />
         <option value="$PROJECT_DIR$/js/Services/functionService.js" />
         <option value="$PROJECT_DIR$/js/Services/plumbService.js" />
+        <option value="$PROJECT_DIR$/js/Model/measure.js" />
       </list>
     </option>
   </component>
@@ -579,7 +569,15 @@
       <created>1374477757493</created>
       <updated>1374477757493</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working properties">
+      <created>1374480973137</created>
+      <updated>1374480973137</updated>
+    </task>
+    <task id="LOCAL-00010" summary="working properties">
+      <created>1374481153291</created>
+      <updated>1374481153291</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -606,24 +604,24 @@
     <frame x="1912" y="-8" width="1216" height="1936" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18851998" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986821" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18861513" sideWeight="0.81148005" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13470992" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18851998" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32940018" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986821" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18861513" sideWeight="0.6004502" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3995498" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -697,54 +695,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/filters/filters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="244" selection-end="254" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Directives/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="48" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#160#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplateEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1367253399373" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Directives/measureTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="48" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1367254948645" expanded="false" signature="454:473" placeholder="..." />
-            <marker date="1367254948645" expanded="false" signature="543:554" placeholder="..." />
-            <marker date="1367254948645" expanded="false" signature="606:618" placeholder="..." />
+            <marker date="1367254948645" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1367254948645" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1367254948645" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -793,13 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="281" column="8" selection-start="6049" selection-end="6138" vertical-scroll-proportion="0.3781223">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/Directives/plumbDirectives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="59" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
@@ -820,10 +770,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/Services/plumbService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="11" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.38494936">
+        <state line="75" column="11" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#160#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/angular/angular-scenario.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4707" column="16" selection-start="126452" selection-end="126452" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Model/measure.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="4" selection-start="587" selection-end="587" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/filters/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="50" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="20" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#160#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Controllers/measureCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="38" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="9" selection-start="1331" selection-end="1331" vertical-scroll-proportion="0.3326713">
+          <folding />
         </state>
       </provider>
     </entry>

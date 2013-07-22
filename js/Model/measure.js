@@ -194,7 +194,7 @@ function Property(){
     self.name = "";
     self.value = "";
 
-    return false;
+    return self;
 }
 
 function Parameter(){
