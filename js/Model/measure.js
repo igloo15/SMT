@@ -26,6 +26,12 @@ function GetModelId(){
 }
 
 
+function Location(x, y){
+    var self = this;
+    self.x = x;
+    self.y = y;
+}
+
 function MeasureDefinition(){
     var self = this;
     self.Guid = "";
@@ -40,7 +46,7 @@ function MeasureDefinition(){
     self.inputs = [];
     self.triggers = [];
     self.actions = [];
-
+    self.location = "";
 
     self.addProperty = function(property){
         self.properties.push(property);
@@ -104,6 +110,7 @@ function MeasureTemplate(){
     self.properties = [];
     self.parameters = [];
     self.constants = [];
+    self.location = "";
 
     self.addProperty = function(property){
         self.properties.push(property);
@@ -163,6 +170,7 @@ function Action(){
     self.actionName = "";
     self.name = "";
     self.inputs = [];
+    self.location = "";
 
     self.addInput = function(input, index){
         self.inputs.splice(index, 0, input);
@@ -175,6 +183,7 @@ function Action(){
             }
         }
     }
+
 
     return self;
 }
@@ -198,6 +207,8 @@ function Parameter(){
     self.defaultValue = "";
     self.displayUnits = "";
     self.description = "";
+    self.location = "";
+
     return self;
 }
 
@@ -247,6 +258,7 @@ function MeasureComputation(name, operator, functionName){
     self.name = name;
     self.operands = [];
     self.id = GetModelId();
+    self.location = "";
 
     self.addInput = function(input, index){
         self.operands.splice(index, 0, input);
@@ -268,6 +280,8 @@ function EnvironmentVariable(){
     self.name = "";
     self.value = "";
     self.id = GetModelId();
+    self.location = "";
+
     return self;
 }
 
@@ -283,6 +297,7 @@ function DataRequest(){
     self.subscriptionType = "";
     self.units = "";
     self.limit = "";
+    self.location = "";
 
     return self;
 }

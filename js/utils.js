@@ -21,10 +21,15 @@ function drag(ev)
 function drop(ev)
 {
     ev.preventDefault();
-    var data=ev.dataTransfer.getData("Text");
-    $('#'+data).clone().attr('id', data+''+componentIndex).removeAttr('ondragstart').removeAttr('draggable').removeClass('component-box').addClass('jsplumb-box').appendTo(ev.target);
-    jsPlumb.draggable($('.jsplumb-box'), {containment: 'parent'});
-    componentIndex++;
+    try{
+        var data=ev.dataTransfer.getData("Text");
+
+        $('#mainsection').scope().addItem(data, ev);
+    }catch(err){
+
+    }
+
+
 }
 
 function generateGuid()
