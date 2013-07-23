@@ -34,15 +34,39 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
         var item;
         var element;
         if(data == MeasureComputationType){
-            item = measureService.createComputation($scope.functionservice);
+            /*item = measureService.createComputation($scope.functionservice);
+
+            var index = $scope.drawAbleItems.length;
+
+            $scope.drawAbleItems.push(item);         */
+
+            var stuff = measureService.createComputation($scope.functionservice);
+            item = stuff.item;
+            element = stuff.element;
+            item.location = new Location(ev.pageX, ev.pageY);
+
+
+        }
+        else if(data == ConstantType){
+            item = measureService.createConstant($scope);
+
+            item.location = new Location(ev.pageX, ev.pageY);
 
             var index = $scope.drawAbleItems.length;
 
             $scope.drawAbleItems.push(item);
 
-            item.location = new Location(ev.pageX, ev.pageY);
-            element = $compile("<measurecomputation class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></measurecomputation>")($scope);
+            element = $compile("<constant class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></constant>")($scope);
+        }else if(data == ParameterType){
+            item = measureService.createParameter();
 
+            item.location = new Location(ev.pageX, ev.pageY);
+
+            var index = $scope.drawAbleItems.length;
+
+            $scope.drawAbleItems.push(item);
+
+            element = $compile("<constant class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></constant>")($scope);
         }
 
         plumbService.addElement(item, element);

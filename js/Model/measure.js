@@ -220,6 +220,15 @@ function Constant(){
     self.units = "";
     self.value = "";
 
+
+    self.form = {
+        id: new Form('ID', 'id', 'read', true, null, null),
+        guid: new Form('Name', 'name', 'text', false, null, null),
+        type: new Form('Type', 'type', 'functionSelect', true, null, null),
+        units: new Form('Units', 'units', 'text', true, null, null),
+        value: new Form('Value', 'value', 'text', true, null, null)
+    }
+
     return self;
 }
 

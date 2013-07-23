@@ -30,3 +30,24 @@ app.directive("measurecomputation", function(){
 
     }
 });
+
+app.directive("constant", function(){
+    return {
+        restrict: "E",
+        scope: {
+            object:"=",
+            selectitem: "&"
+        },
+        template:
+            "<div class='measurecomp' ng-click='selectitem({item:object})'>" +
+                "<p>Constant </p>" +
+                "<p style=''>Name : {{object.name}} </p>" +
+                "<p style=''>Value : {{object.value}} </p>"+
+            "</div>",
+
+        link: function(scope, element, attrs){
+            element.appendTo($('.mainview-workspace'));
+        }
+
+    }
+});

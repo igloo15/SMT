@@ -7,69 +7,86 @@
  */
 
 
-app.service('measureService', function(){
+app.service('measureService', function($compile){
     var self = this;
     self.measureTemplates = [];
+    self.measureDefinitions = [];
     self.computations = [];
     self.parameters = [];
     self.constants = [];
     self.dataRequests = [];
 
-    self.measureDefinitions = [];
+    self.measureTemplate = null;
+    self.measureDefinition = null;
 
-    self.selectedMeasure = null;
-
-    self.createMeasureTemplate = function(name, description){
+    self.createMeasureTemplate = function(){
         var newMeasure = new MeasureTemplate();
         newMeasure.Guid = generateGuid();
-        newMeasure.name = name;
-        newMeasure.description = description;
+
         self.addMeasureTemplate(newMeasure);
         return newMeasure;
     };
 
-    self.createParameter = function(name, type, enumName, enumValues, defaultValue, displayUnits, description){
+    self.createParameter = function(){
+        checkMeasure();
         var newParameter = new Parameter();
-        newParameter.name = name;
-        newParameter.type = type;
-        newParameter.enumName = enumName;
-        newParameter.enumValues = enumValues;
-        newParameter.defaultValue = defaultValue;
-        newParameter.displayUnits = displayUnits;
-        newParameter.description = description;
+
         self.addParameter(newParameter);
         return newParameter;
     };
 
     self.createComputation = function(functionService){
+        checkMeasureTemplate();
         var newComp = new MeasureComputation(functionService);
+        var index = self.computations.length;
         self.computations.push(newComp);
-        return newComp;
+        var element = $compile("<measurecomputation class='jsplumb-box' id='"+newComp.id+"' object='computations["+index+"]' selectItem='callSelectItem(item)'></measurecomputation>")(self);
+        return {item: newComp, elem:element};
     };
 
     self.createConstant = function(){
+        checkMeasure();
         var newConst = new Constant();
         self.constants.push(newConst);
         return newConst;
     };
 
     self.createDataRequest = function(){
+        checkMeasureTemplate();
         var newDR = new DataRequest();
         self.dataRequests.push(newDR);
         return newDR;
     };
 
-    self.addParameter = function(parameter){
-        self.parameters.push(parameter);
-    };
+    self.createInput = function(item, index, inputType, ref, name, type, value){
+        var newItem = new Input();
+        newItem.inputType = inputType;
+        newItem.ref = ref;
+        newItem.name = name;
+        newItem.type = type;
+        newItem.value = value;
 
-    self.addMeasureTemplate =  function(measure){
-        self.measures.push(measure);
-    };
+        item.addInput(item, index);
+    }
 
-    self.selectMeasure = function(measure){
-        self.selectedMeasure = measure;
-    };
+
+
+    function checkMeasure(){
+        checkMeasureDefinition();
+        checkMeasureTemplate();
+    }
+
+    function checkMeasureTemplate(){
+        if(self.measureTemplate != null){
+            self.measureTemplate = self.createMeasureTemplate();
+        }
+    }
+
+    function checkMeasureDefinition(){
+        if(self.measureDefinition != null){
+            self.measureDefinition = self.createMeasureDefintion();
+        }
+    }
 
     return self;
 });
