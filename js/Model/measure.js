@@ -16,6 +16,74 @@ var TriggerStartType = "TriggerStart";
 var TriggerStopType = "TriggerStop";
 var MeasureComputationType = "MeasureComputation";
 
+
+var booleanOptions = [
+    {key:true,
+     name: "True"},
+    {key:false,
+        name: "False"}
+];
+
+var typeOptions = [
+    {key:"double",
+        name: "Double"},
+    {key:"int32",
+        name: "Integer"},
+    {key:"string",
+        name: "String"},
+    {key:"measurement",
+        name: "Measure"},
+    {key:"boolean",
+        name: "Boolean"}
+];
+
+var inputTypeOptions = [
+    {key:"MEASURE",
+        name: "Measure"},
+    {key:"PARAMETER",
+        name: "Parameter"},
+    {key:"CONSTANT",
+        name: "Constant"},
+    {key:"DATA_REQUEST",
+        name: "Data Request"},
+    {key:"VALUE",
+        name: "Value"}
+];
+
+var visibilityOptions = [
+    {key:"SubMeasure",
+        name: "SubMeasure"},
+    {key:"MainMeasure",
+        name: "Main Measure"},
+    {key:"HIDDEN",
+        name: "Hidden Measure"}
+];
+
+var environmentVariableOptions = [
+    {key:"PHASE",
+        name: "Phase"},
+    {key:"TIMING_SIMTIME",
+        name: "Current Simtime"},
+    {key:"TIMING_CURRENT_MEASURE_RUNNING_TIME",
+        name: "Current Measure Running Time"},
+    {key:"TIMING_TOTAL_MEASURE_RUNNING_TIME",
+        name: "Total Measure Running Time"},
+    {key:"TIMING_TOTAL_MEASURE_STOPPED_TIME",
+        name: "Total Measure Stopped Time"},
+    {key:"TIMING_LAST_MEASURE_STOPPED_TIME",
+        name: "Last Measure Stopped Time"},
+    {key:"TIMING_TOTAL_MEASURE_STARTED_TIME",
+        name: "Last Measure Started Time"}
+];
+
+var datasourceQueryTypeOptions = [
+    {key:"ENTITY",
+        name: "Entity"},
+    {key:"INTERACTION",
+        name: "Interaction"}
+]
+
+
 var modelIndex = 0;
 var modelIdPrefix = "measureModel";
 
@@ -103,7 +171,7 @@ function MeasureDefinition(){
 function MeasureTemplate(){
     var self = this;
     self.id = GetModelId;
-    self.Guid = "";
+    self.Guid = generateGuid();
     self.name = "";
     self.computation = null;
     self.description = "";
@@ -164,13 +232,19 @@ function MeasureTrigger(){
     return self;
 }
 
-function Action(){
+function Action(actionService){
     var self = this;
     self.id = GetModelId();
+    self.Guid = generateGuid();
     self.actionName = "";
+    self.operator = "";
     self.name = "";
     self.inputs = [];
     self.location = "";
+
+    self.getActionOperators = function(item){
+        return actionService.getActionOperators(item);
+    }
 
     self.addInput = function(input, index){
         self.inputs.splice(index, 0, input);
@@ -183,6 +257,14 @@ function Action(){
             }
         }
     }
+
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'text', false, null, null),
+        new Form('Name', 'name', 'text', true, null, null),
+        new Form('Action Name', 'actionName', 'select', true, actionService.getActionNames(), null),
+        new Form('Operator', 'operator', 'functionselect', true, 'getActionOperators', 'actionName')
+    ]
 
 
     return self;
@@ -200,6 +282,7 @@ function Property(){
 function Parameter(){
     var self = this;
     self.id = GetModelId();
+    self.Guid = generateGuid();
     self.name = "";
     self.type = "";
     self.enumName = "";
@@ -208,6 +291,18 @@ function Parameter(){
     self.displayUnits = "";
     self.description = "";
     self.location = "";
+
+
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'text', false, null, null),
+        new Form('Type', 'type', 'select', true, typeOptions, null),
+        new Form('enumName', 'enumName', 'text', true, null, null),
+        new Form('enumValues', 'enumValues', 'text', true, null, null),
+        new Form('defaultValue', 'defaultValue', 'text', true, null, null),
+        new Form('displayUnits', 'displayUnits', 'text', true, null, null),
+        new Form('description', 'description', 'largetext', true, null, null)
+    ]
 
     return self;
 }
@@ -221,13 +316,13 @@ function Constant(){
     self.value = "";
 
 
-    self.form = {
-        id: new Form('ID', 'id', 'read', true, null, null),
-        guid: new Form('Name', 'name', 'text', false, null, null),
-        type: new Form('Type', 'type', 'functionSelect', true, null, null),
-        units: new Form('Units', 'units', 'text', true, null, null),
-        value: new Form('Value', 'value', 'text', true, null, null)
-    }
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Name', 'name', 'text', false, null, null),
+        new Form('Type', 'type', 'select', true, typeOptions, null),
+        new Form('Units', 'units', 'text', true, null, null),
+        new Form('Value', 'value', 'text', true, null, null)
+    ];
 
     return self;
 }
@@ -260,7 +355,7 @@ function Input(){
     return self;
 }
 
-function MeasureComputation(functionService){
+function MeasureComputation(functionService, plumbService){
     var self = this;
     self.operator = "";
     self.functionName = "";
@@ -269,11 +364,16 @@ function MeasureComputation(functionService){
     self.id = GetModelId();
     self.Guid = generateGuid();
     self.functionPlugins = functionService;
+    self.plumbservice = plumbService;
     self.location = "";
+    self.getFunctionPluginOperators = function(item){
+        return functionService.getFunctionPluginOperators(item);
+    }
 
     self.addInput = function(input, index){
         self.operands.splice(index, 0, input);
     }
+
     self.removeInput = function(id){
         for(var i in self.operands){
             if(self.operands[i].id == id){
@@ -284,51 +384,77 @@ function MeasureComputation(functionService){
 
     self.type = MeasureComputationType;
 
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
+        new Form('Name', 'name', 'text', true, null, null),
+        new Form('Function Name', 'functionName', 'select', true, functionService.getFunctionPluginNames(), null),
+        new Form('Operator', 'operator', 'functionselect', true, 'getFunctionPluginOperators', 'functionName')
 
-    self.form = {
-        name: new Form('Name', 'name', 'text', true, null, null),
-        guid: new Form('Guid', 'Guid', 'read', false, null, null),
-        operator: new Form('Operator', 'operator', 'functionSelect', true, null, 'functionName'),
-        functionName: new Form('Function Name', 'functionName', 'select', true, self.functionPlugins.getFunctionPluginNames(), null)
-
-    }
+    ]
 
     return self;
 }
 
 function EnvironmentVariable(){
     var self = this;
+    self.id = GetModelId();
+    self.Guid = generateGuid();
     self.name = "";
     self.value = "";
-    self.id = GetModelId();
+
     self.location = "";
+
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
+        new Form('Name', 'name', 'text', true, null, null),
+        new Form('Value', 'value', 'select', true, environmentVariableOptions, null)
+    ]
 
     return self;
 }
 
-function DataRequest(){
+function DataRequest(dataSourceService){
     var self = this;
     self.id = GetModelId();
+    self.Guid = generateGuid();
     self.type = "";
     self.dataSourceRef = "";
     self.where = "";
     self.from ="";
     self.select = "";
-    self.Guid = generateGuid();
     self.subscriptionType = "";
     self.units = "";
     self.limit = "";
     self.location = "";
 
+    self.getClasses = function(item){
+        return dataSourceService.getClasses(item);
+    }
+
+    self.getProperties = function(item){
+        return dataSourceService.getProperties(item);
+    }
+
+
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
+        new Form('Data Source', 'dataSourceRef', 'select', true, dataSourceService.getSourceNames(), null),
+        new Form('From', 'from', 'functionselect', true, 'getClasses', 'dataSourceRef'),
+        new Form('Select', 'select', 'functionselect', true, 'getProperties', 'from')
+    ]
+
     return self;
 }
 
-function Form(label, model, widget, required, options, observable){
+function Form(label, model, widget, required, options, observableFunction){
     var self = this;
     self.label = label;
     self.model = model;
     self.widget = widget;
     self.required = required;
     self.options = options;
-    self.observable = observable;
+    self.observable = observableFunction;
 }

@@ -7,7 +7,7 @@
  */
 
 'use strict'
-app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumbService', 'functionService', function($scope, $compile, measureService, plumbService, functionService){
+app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumbService', 'functionService', 'dataService', 'actionService', function($scope, $compile, measureService, plumbService, functionService, dataService, actionService){
     /*$("#panArea").panzoom({
         $zoomIn: $(".zoom-in"),
         $zoomOut: $(".zoom-out"),
@@ -18,6 +18,9 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
     $scope.measureservice = measureService;
 
     $scope.functionservice = functionService;
+    $scope.actionservice = actionService;
+    $scope.dataservice = dataService;
+    $scope.plumbservice = plumbService;
 
     $scope.callSelectItem = function(item){
         $scope.selectedForm = item.form;
@@ -32,47 +35,20 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
 
     $scope.addItem = function(data, ev){
         var item;
-        var element;
+        var location = new Location(ev.pageX, ev.pageY);
         if(data == MeasureComputationType){
-            /*item = measureService.createComputation($scope.functionservice);
-
-            var index = $scope.drawAbleItems.length;
-
-            $scope.drawAbleItems.push(item);         */
-
-            var stuff = measureService.createComputation($scope.functionservice);
-            item = stuff.item;
-            element = stuff.element;
-            item.location = new Location(ev.pageX, ev.pageY);
-
-
-        }
-        else if(data == ConstantType){
-            item = measureService.createConstant($scope);
-
-            item.location = new Location(ev.pageX, ev.pageY);
-
-            var index = $scope.drawAbleItems.length;
-
-            $scope.drawAbleItems.push(item);
-
-            element = $compile("<constant class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></constant>")($scope);
+            item = measureService.createComputation($compile, $scope, location);
+        }else if(data == ConstantType){
+            item = measureService.createConstant($compile, $scope, location);
         }else if(data == ParameterType){
-            item = measureService.createParameter();
-
-            item.location = new Location(ev.pageX, ev.pageY);
-
-            var index = $scope.drawAbleItems.length;
-
-            $scope.drawAbleItems.push(item);
-
-            element = $compile("<constant class='jsplumb-box' id='"+item.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></constant>")($scope);
+            item = measureService.createParameter($compile, $scope, location);
+        }else if(data == DataRequestType){
+            item = measureService.createDataRequest($compile, $scope, location);
         }
 
-        plumbService.addElement(item, element);
-        /*$('#'+data).clone().attr('id', data+''+componentIndex).removeAttr('ondragstart').removeAttr('draggable').removeClass('component-box').addClass('jsplumb-box').appendTo(ev.target);
-        jsPlumb.draggable($('.jsplumb-box'), {containment: 'parent'});
-        componentIndex++;*/
+
+        //plumbService.addElement(item);
+
     }
 
 

@@ -51,3 +51,45 @@ app.directive("constant", function(){
 
     }
 });
+
+app.directive("parameter", function(){
+    return {
+        restrict: "E",
+        scope: {
+            object:"=",
+            selectitem: "&"
+        },
+        template:
+            "<div class='measurecomp' ng-click='selectitem({item:object})'>" +
+                "<p>Paramter </p>" +
+                "<p style=''>Name : {{object.name}} </p>" +
+                "<p style=''>Value : {{object.value}} </p>"+
+                "</div>",
+
+        link: function(scope, element, attrs){
+            element.appendTo($('.mainview-workspace'));
+        }
+
+    }
+});
+
+app.directive("datarequest", function(){
+    return {
+        restrict: "E",
+        scope: {
+            object:"=",
+            selectitem: "&"
+        },
+        template:
+            "<div class='measurecomp' ng-click='selectitem({item:object})'>" +
+                "<p>Data Request </p>" +
+                "<p style=''>Name : {{object.name}} </p>" +
+                "<p style=''>Value : {{object.value}} </p>"+
+                "</div>",
+
+        link: function(scope, element, attrs){
+            element.appendTo($('.mainview-workspace'));
+        }
+
+    }
+});
