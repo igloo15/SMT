@@ -64,8 +64,6 @@ app.controller('templateCtrl', ['$scope', 'measureService', 'plumbServiceNew', '
     }
 
 
-    $scope.drawAbleItems = [];
-
     $scope.callSelectItem = function(item){
         $scope.selectedForm = item.form;
         $scope.selectedItem = item;

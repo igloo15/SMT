@@ -102,3 +102,49 @@ app.controller('templateModalCtrl', ['$scope', 'dialog', 'dataService', 'measure
     };
 
 }]);
+
+
+app.controller('definitionModalCtrl', ['$scope', 'dialog', 'dataService', 'measureService', function($scope, dialog, dataService, measureService){
+    $scope.open = function () {
+        $scope.shouldBeOpen = true;
+    };
+
+    $scope.close = function () {
+        $scope.closeMsg = 'I was closed at: ' + new Date();
+        dialog.close();
+    };
+
+    $scope.defObjects = measureService.defObjects;
+
+    $scope.findFile = function(item){
+        if(typeof($scope.searchText) === 'undefined'){
+            return true;
+        }
+
+
+        if(item.name.indexOf($scope.searchText) !== -1){
+            return true;
+        }
+        if(item.Guid.indexOf($scope.searchText) !== -1){
+            return true;
+        }
+
+
+
+        return false;
+    }
+
+    $scope.selectItem = function(item){
+        measureService.defObject = item;
+    }
+
+    $scope.isActive = function(item){
+        return item === measureService.defObject;
+    }
+
+    $scope.opts = {
+        backdropFade: true,
+        dialogFade:true
+    };
+
+}]);

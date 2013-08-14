@@ -149,3 +149,21 @@ app.directive('datarequestcomponent', function(){
         }
     }
 })
+
+app.directive('measuretemplatecomponent', function(){
+    return {
+        restrict: 'E',
+        transclude: true,
+        templateUrl: 'partials/directives/measuretemplatecomponent.html',
+        link: function(scope, element, attr){
+            element.children('div').children('div').draggable({revert:true, helper:'clone',
+                start:function(){
+                    scope.$parent.dropItem = scope.mt;
+                },
+                stop:function(){
+                    scope.$parent.dropItem = null;
+                }
+            })
+        }
+    }
+})

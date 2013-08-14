@@ -1,57 +1,32 @@
 <div id="mainsection" class="mainview">
-    <div class="mainview-sidebar">
+    <div class="mainview-sidebar not-selectable">
         <p class="mainview-sidebar-header">Components</p>
         <div class="components-group" >
-            <div id="CONSTANT" class="component-box" draggable="true" ondragstart="drag(event)">
-                <div  class="middlediv component-box-inner">
-                    <div>C</div>
-                </div>
-            </div>
-            <div id="PARAMETER" class="component-box" draggable="true" ondragstart="drag(event)">
-                <div  class="middlediv component-box-inner">
-                    <div>P</div>
+            <component ng-repeat="comp in components" class="">
+
+            </component>
+            <div class="datarequest-group">
+                <p class="mainview-sidebar-header">Data Requests</p>
+                <hr/>
+                <input type="text" ng-model="searchText" class="input-medium search-query">
+                <hr/>
+                <div class="datarequest-group-inner">
+                    <measuretemplatecomponent ng-repeat="mt in measureservice.measureTemplates | filter:findTemplate">
+                    </measuretemplatecomponent>
                 </div>
             </div>
         </div>
     </div>
-    <div class="mainview-workspace" ondrop="drop(event)" ondragover="allowDrop(event)" >
+    <div class="mainview-workspace not-selectable" ondrop="drop(event)" ondragover="allowDrop(event)" >
 
+        <parameter ng-repeat="param in defObject.parameters" object="param" select="callSelectItem(item)" class="jsplumb-box"></parameter>
+        <constant ng-repeat="const in defObject.constants" object="const" select="callSelectItem(item)" class="jsplumb-box"></constant>
+        <action ng-repeat="action in defObject.actions" object="action" select="callSelectItem(item)" class="jsplumb-box"></action>
+        <measuretrigger ng-repeat="trigger in defObject.triggers" object="trigger" select="callSelectItem(item)" class="jsplumb-box"></measuretrigger>
+        <measuredefinition ng-repeat="definition in defObject.definitions" object="definition" select="callSelectItem(item)" class="jsplumb-box"></measuredefinition>
 
     </div>
     <div class="mainview-properties">
-        <p class="mainview-properties-header">Properties</p>
-        <div class="property-group">
-            <div ng-repeat="element in selectedForm" >
-                <div ng-switch on="element.widget">
-                    <div ng-switch-when="read" class="controls controls-row">
-                        <span class="add-on span2 property-float">{{element.label}}</span>
-                        <input class="span3 property-float uneditable-input" type="text" ng-model="selectedItem[element.model]" ng-required="element.required"/>
-                    </div>
-
-                    <div ng-switch-when="text" class="controls controls-row">
-                        <span class="add-on span2 property-float">{{element.label}}</span>
-                        <input class="span3 property-float" type="text" ng-model="selectedItem[element.model]" ng-required="element.required"/>
-                    </div>
-
-                    <div ng-switch-when="select" class="controls controls-row">
-                        <span class="add-on span2 property-float">{{element.label}}</span>
-                        <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in element.options"></select>
-                    </div>
-
-                    <div ng-switch-when="functionselect" class="controls controls-row">
-                        <span class="add-on span2 property-float">{{element.label}}</span>
-                        <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in selectedItem[element.options](selectedItem[element.observable])"></select>
-                    </div>
-
-                    <div ng-switch-when="largetext" class="controls controls-row">
-                        <span class="add-on span2 property-float">{{element.label}}</span>
-                        <textarea class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
+        <propertylist></propertylist>
     </div>
 </div>

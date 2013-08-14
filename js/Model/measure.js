@@ -13,6 +13,8 @@ var MeasureType = "MEASURE";
 var DataRequestType = "DATA_REQUEST";
 var ValueType = "VALUE";
 var EnvironmentVariableType = "ENVIRONMENTVARIABLE";
+var TriggerType = "TRIGGER";
+var ActionType = "ACTION";
 var TriggerStartType = "TriggerStart";
 var TriggerStopType = "TriggerStop";
 var MeasureComputationType = "MeasureComputation";
@@ -123,15 +125,31 @@ function Location(x, y){
     return self;
 }
 
-function MeasureDefinition(){
+function DefinitionFile(){
     var self = this;
-    self.Guid = "";
+    self.name = '';
+    self.id = GetModelId();
+    self.Guid = generateGuid();
+    self.triggers = [];
+    self.actions = [];
+    self.constants = [];
+    self.parameters = [];
+    self.definitions = [];
+    self.description = '';
+
+    return self;
+}
+
+function MeasureDefinition(template){
+    var self = this;
+    self.Guid = generateGuid();
     self.id = GetModelId();
     self.name = "";
     self.outputUnits = "";
     self.overrideUnits = "";
     self.visibility = "";
-    self.systemMeasureTemplateId = "";
+    self.systemMeasureTemplateId = template.Guid;
+    self.systemMeasureTemplate = template;
     self.description = "";
     self.properties = [];
     self.inputs = [];
@@ -203,6 +221,7 @@ function MeasureTemplate(){
     self.computations = [];
     self.environmentvars = [];
     self.dataRequests = [];
+    self.newParam = true;
 
 
 
@@ -225,10 +244,12 @@ function MeasureTemplate(){
     }
 
     self.addParameter = function(parameter){
+        self.newParam = true;
         self.parameters.push(parameter);
     }
 
     self.removeParameter = function(id){
+        self.newParam = true;
         for(var i in self.parameters){
             if(self.parameters[i].id == id){
                 self.parameters.splice(i, 1);
@@ -284,7 +305,6 @@ function Action(actionService){
     self.operator = "";
     self.name = "";
     self.inputs = [];
-    self.plumbObject = new plumbObject(self);
 
     self.getActionOperators = function(item){
         return actionService.getActionOperators(item);

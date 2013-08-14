@@ -11,7 +11,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     var self = this;
 
     self.measureTemplates = [];
-    self.measureDefinitions = [];
+    self.defObjects = [];
     self.dataRequests = [];
 
     self.guidLookup = {};
@@ -26,7 +26,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
 
 
     self.measureTemplate = null;
-    self.measureDefinition = null;
+    self.defObject = null;
     self.dataRequest = null;
 
     self.currentView = {};
@@ -34,6 +34,11 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.setMeasureTemplate = function(template){
         self.measureTemplate = template;
         self.currentView = template;
+    }
+
+    self.setDefObject = function(defObject){
+        self.defObject = defObject;
+        self.currentView = defObject;
     }
 
     self.createItem = function(itemType){
@@ -48,8 +53,19 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
             item = self.createDataRequest();
         }else if(itemType == EnvironmentVariableType){
             item = self.createEnvironmentVariable();
+        }else if(itemType == TriggerType){
+            item = self.createMeasureTrigger();
+        }else if(itemType == ActionType){
+            item = self.createAction();
         }
         return item;
+    }
+
+    self.createDefFile = function(){
+        var defTemp = new DefinitionFile();
+        self.defObjects.push(defTemp);
+
+        return defTemp;
     }
 
     self.createMeasureTemplate = function(){
@@ -64,10 +80,20 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
 
 
 
-    self.createMeasureDefinition = function(){
-        var newDefinition = new MeasureDefinition();
-        self.measureDefinitions.push(newDefinition);
-        return newDefinition;
+    self.createMeasureDefinition = function(template){
+        var item = new MeasureDefinition(template);
+
+        item.plumbObject = plumbService.createObject(item);
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            item.plumbObject.addTargetEndpoint(new plumbService.createTriggerEndpoint(-1), TARGET_TRIGGER_TYPE);
+            item.plumbObject.addTargetEndpoint(new plumbService.createActionEndpoint(-1), TARGET_ACTION_TYPE);
+
+            self.currentView.definitions.push(item);
+        }
+
+
+        return item;
     }
 
     self.createParameter = function(){
@@ -163,9 +189,31 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
         item.addInput(item, index);
     }
 
-    self.createAction = function(item){
+    self.createAction = function(){
         checkMeasureDefinition();
 
+        var item = new Action(actionService);
+        item.plumbObject = plumbService.createObject(item);
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            item.plumbObject.addTargetEndpoint(new plumbService.createInputEndpoints(0.5, 0.0, -1));
+
+            self.currentView.actions.push(item);
+        }
+
+        return item;
+
+    }
+
+    self.createMeasureTrigger = function(){
+        var item = new MeasureTrigger();
+        item.plumbObject = plumbService.createObject(item);
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(1));
+            self.currentView.triggers.push(item);
+        }
+
+        return item;
     }
 
 
