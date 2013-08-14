@@ -1,12 +1,62 @@
 <div class="mainview">
-    <div class="mainview-sidebar">
-        <p class="mainview-sidebar-header">Components</p>
+    <div class="mainview-workspace data-view not-selectable">
 
-    </div>
-    <div class="mainview-workspace">
+        <div class="data-view-requests" ng-click="selectDR()">
+            <div id="data_request_box" class="data-view-request-box">
+                <div id="select_box" class="pull-left data-view-request-area">
+                    <h3>Selected Properties</h3>
+                    <ul class="nav nav-pills nav-stacked" ui-sortable ng-model="dataRequest.selectItems">
+                        <li ng-repeat="select in dataRequest.selectItems" class="invalid-drop">
+                            <a href="#/data"><span>{{ select }}</span><span class="pull-right"><i class="icon-remove" ng-click="removeProp(select)"></i></span></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="data-view-divider pull-left"></div>
+                <div id="param_box" class="pull-left data-view-request-area">
+                    <h3>Parameters</h3>
+                    <ul class="nav nav-pills nav-stacked" ui-sortable ng-model='dataRequest.parameters'>
+                        <li ng-repeat="param in dataRequest.parameters" ng-class="{'active': param == selectedItem}" ng-click="callSelectItem(param)" stop-event='click'>
+                            <a href="#/data">
+                                <span>Name : {{ param.name }}</span>
+                                <span> Type : {{ param.type }}</span>
+                                <span class="pull-right"><i class="icon-remove" ng-click="removeParam(param)"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="data-view-parameter-box btn-toolbar">
+                        <button class="btn" ng-click="addParam()" stop-event='click'>Add Property</button>
+                        <button class="btn">Test</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <hr/>
+        <div class="data-view-model">
+            <div class="data-view-model-inner">
+                <datadirective object='rootModel' selectitem='callSelectItem(item)' selecteditem='selectedItem'></datadirective>
+            </div>
+            <div class="data-view-model-btns">
+                <span>Data Model : </span>
+                <select style="margin-bottom: 0px" ng-model="rootModel" ng-options="v as k for (k,v) in models"></select>
+                <button class="btn" ng-click="addModel()">Add Model</button>
+                <div class="pull-right" style="margin-right: 20px;">
+                    <button class="btn" ng-click="addProp()">Add Prop</button>
+                    <button class="btn" ng-click="addClass()">Add Class</button>
+                </div>
+
+            </div>
+        </div>
+
+
+
 
     </div>
     <div class="mainview-properties">
-        <p class="mainview-properties-header">Properties</p>
+        <propertylist></propertylist>
+
+
     </div>
 </div>

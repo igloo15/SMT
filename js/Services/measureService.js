@@ -7,99 +7,149 @@
  */
 
 
-app.service('measureService', function($compile){
+app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'functionService', 'dataService', function($compile, plumbService, actionService, functionService, dataService){
     var self = this;
+
     self.measureTemplates = [];
     self.measureDefinitions = [];
-    self.computations = [];
-    self.parameters = [];
-    self.constants = [];
     self.dataRequests = [];
+
+    self.guidLookup = {};
+
+    self.plumbservice = plumbService;
+    self.actionservice = actionService;
+    self.functionservice = functionService;
+    self.dataservice = dataService;
+
+    self.compile = $compile;
+
+
 
     self.measureTemplate = null;
     self.measureDefinition = null;
+    self.dataRequest = null;
 
-    MeasureComputation.prototype.plumbSetup = createPlumbObject;
-    MeasureComputation.prototype.updatePlumb = setupMeasureComputationEndpoints;
-    Parameter.prototype.plumbSetup = createPlumbObject;
-    DataRequest.prototype.plumbSetup = createPlumbObject;
-    Constant.prototype.plumbSetup = createPlumbObject;
-    MeasureTrigger.prototype.plumbSetup = createPlumbObject;
-    Action.prototype.plumbSetup = createPlumbObject;
+    self.currentView = {};
+
+    self.setMeasureTemplate = function(template){
+        self.measureTemplate = template;
+        self.currentView = template;
+    }
+
+    self.createItem = function(itemType){
+        var item;
+        if(itemType == MeasureComputationType){
+            item = self.createComputation();
+        }else if(itemType == ConstantType){
+            item = self.createConstant();
+        }else if(itemType == ParameterType){
+            item = self.createParameter();
+        }else if(itemType == DataRequestType){
+            item = self.createDataRequest();
+        }else if(itemType == EnvironmentVariableType){
+            item = self.createEnvironmentVariable();
+        }
+        return item;
+    }
 
     self.createMeasureTemplate = function(){
+
         var newMeasure = new MeasureTemplate();
-        newMeasure.Guid = generateGuid();
         self.measureTemplates.push(newMeasure);
+
+
+
         return newMeasure;
     };
 
-    self.createParameter = function(compile, scope, location){
-        checkMeasure();
-        var newParameter = new Parameter();
-        newParameter.location = location;
-        self.parameters.push(newParameter);
 
-        var index = scope.drawAbleItems.length;
-        scope.drawAbleItems.push(newParameter);
-        var element = compile("<parameter class='jsplumb-box' id='"+newParameter.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></parameter>")(scope);
-        newParameter.elem = element;
 
-        newParameter.plumbSetup(scope.plumbservice, newParameter);
+    self.createMeasureDefinition = function(){
+        var newDefinition = new MeasureDefinition();
+        self.measureDefinitions.push(newDefinition);
+        return newDefinition;
+    }
 
-        return newParameter;
-    };
-
-    self.createComputation = function(compile, scope, location){
-        checkMeasureTemplate();
-
-        var newComp = new MeasureComputation(scope.functionservice);
-        newComp.location = location;
-        self.computations.push(newComp);
-
-        var index = scope.drawAbleItems.length;
-        scope.drawAbleItems.push(newComp);
-        var element = compile("<measurecomputation class='jsplumb-box' id='"+newComp.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></measurecomputation>")(scope);
-        newComp.elem = element;
-
-        newComp.plumbSetup(scope.plumbservice, newComp);
-        newComp.updatePlumb(scope.plumbservice, newComp);
-
-        return newComp;
-    };
-
-    self.createConstant = function(compile, scope, location){
+    self.createParameter = function(){
         checkMeasure();
 
-        var newConst = new Constant();
-        newConst.location = location;
-        self.constants.push(newConst);
 
-        var index = scope.drawAbleItems.length;
-        scope.drawAbleItems.push(newConst);
-        var element = compile("<constant class='jsplumb-box' id='"+newConst.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></constant>")(scope);
-        newConst.elem = element;
+        var item = new Parameter();
 
-        newConst.plumbSetup(scope.plumbservice, newConst);
+        item.plumbObject = plumbService.createObject(item);
 
-        return newConst;
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            self.currentView.parameters.push(item);
+        }
+
+        return item;
     };
 
-    self.createDataRequest = function(compile, scope, location){
+    self.createComputation = function(){
         checkMeasureTemplate();
 
-        var newDR = new DataRequest(scope.dataservice);
-        newDR.location = location;
-        self.dataRequests.push(newDR);
 
-        var index = scope.drawAbleItems.length;
-        scope.drawAbleItems.push(newDR);
-        var element = compile("<datarequest class='jsplumb-box' id='"+newDR.id+"' object='drawAbleItems["+index+"]' selectItem='callSelectItem(item)'></datarequest>")(scope);
-        newDR.elem = element;
+        var item = new MeasureComputation(self.functionservice);
+        item.plumbObject = plumbService.createObject(item);
 
-        newDR.plumbSetup(scope.plumbservice, newDR);
+        item.plumbObject.setup = function(){
+            item.plumbObject.addTargetEndpoint(new plumbService.createInputEndpoints(0.5,0.0, -1), TARGET_INPUT_TYPE);
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(1));
 
-        return newDR;
+            self.currentView.computations.push(item);
+        }
+
+
+
+        return item;
+    };
+
+    self.createConstant = function(){
+        checkMeasure();
+
+        var item = new Constant();
+
+        item.plumbObject = plumbService.createObject(item);
+
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            self.currentView.constants.push(item);
+        }
+
+        return item;
+    };
+
+    self.createDataRequest = function(){
+        checkMeasureTemplate();
+
+        var item = new DataRequest(self.dataservice);
+
+        item.plumbObject = plumbService.createObject(item);
+
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            self.currentView.dataRequests.push(item);
+        }
+
+        self.dataRequests.push(item);
+
+        return item;
+    };
+
+    self.createEnvironmentVariable = function(){
+        checkMeasureTemplate();
+
+        var item = new EnvironmentVariable();
+        item.plumbObject = plumbService.createObject(item);
+
+        item.plumbObject.setup = function(){
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+
+            self.currentView.environmentvars.push(item);
+        }
+
+        return item;
     };
 
     self.createInput = function(item, index, inputType, ref, name, type, value){
@@ -113,6 +163,11 @@ app.service('measureService', function($compile){
         item.addInput(item, index);
     }
 
+    self.createAction = function(item){
+        checkMeasureDefinition();
+
+    }
+
 
 
     function checkMeasure(){
@@ -121,24 +176,37 @@ app.service('measureService', function($compile){
     }
 
     function checkMeasureTemplate(){
-        if(self.measureTemplate != null){
+        if(self.measureTemplate === null){
             self.measureTemplate = self.createMeasureTemplate();
         }
     }
 
     function checkMeasureDefinition(){
-        if(self.measureDefinition != null){
-            self.measureDefinition = self.createMeasureDefintion();
+        if(self.measureDefinition === null){
+            self.measureDefinition = self.createMeasureDefinition();
         }
     }
 
-    function createPlumbObject(service, item){
-        service.addElement(item);
+    function compile(scope, list, index, model, location, createPlumb){
+        var element = $compile(this.compileScriptStart+" object='"+list+"["+index+"]' selectItem='callSelectItem(item)'"+this.compileScriptEnd)(scope);
+        this.elem = element;
+
+        if(createPlumb)
+            createPlumbObject(model, this, location);
+    }
+
+    function createPlumbObject(model, item, location){
+        self.plumbservice.addElement(model, item, location);
     }
 
     function setupMeasureComputationEndpoints(service, item){
         service.createEndpoints(item.elem, 4);
     }
 
+    function setupDataRequestInputs(service, item){
+        jsPlumb.removeAllEndpoints(item.elem);
+        service.createEndpoints(item.elem, item.parameters.length);
+    }
+
     return self;
-});
+}]);

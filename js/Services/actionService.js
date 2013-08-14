@@ -23,7 +23,7 @@ app.service('actionService', function(){
         return self.actionPlugins;
     };
 
-    self.getActionNames = function(item){
+    self.getActionNames = function(){
         var items = [];
 
         angular.forEach(self.actionPlugins, function(value, key){

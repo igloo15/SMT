@@ -1,12 +1,32 @@
-<div class="mainview">
+<div id="mainsection" class="mainview">
     <div class="mainview-sidebar">
         <p class="mainview-sidebar-header">Components</p>
+        <div class="components-group" >
 
+            <component ng-repeat="comp in components" class="">
+
+            </component>
+            <div class="datarequest-group">
+                <p class="mainview-sidebar-header">Data Requests</p>
+                <hr/>
+                <input type="text" ng-model="searchText" class="input-medium search-query">
+                <hr/>
+                <div class="datarequest-group-inner">
+                    <datarequestcomponent ng-repeat="dr in measureservice.dataRequests | filter:findDataRequest">
+                    </datarequestcomponent>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mainview-workspace">
+    <div class="mainview-workspace not-selectable" ng-click="callSelectItem(template)" >
+        <measurecomputation ng-repeat="comp in template.computations" object="comp" select="callSelectItem(item)" class="jsplumb-box"></measurecomputation>
+        <parameter ng-repeat="param in template.parameters" object="param" select="callSelectItem(item)" class="jsplumb-box"></parameter>
+        <constant ng-repeat="const in template.constants" object="const" select="callSelectItem(item)" class="jsplumb-box"></constant>
+        <environmentvariable ng-repeat="ev in template.environmentvars" object="ev" select="callSelectItem(item)" class="jsplumb-box"></environmentvariable>
+        <datarequest ng-repeat="dr in template.dataRequests" object="dr" select="callSelectItem(item)" class="jsplumb-box"></datarequest>
 
     </div>
     <div class="mainview-properties">
-        <p class="mainview-properties-header">Properties</p>
+        <propertylist></propertylist>
     </div>
 </div>

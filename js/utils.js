@@ -21,13 +21,20 @@ function drag(ev)
 function drop(ev)
 {
     ev.preventDefault();
-    try{
+    //try{
+
+
+    if(ev.dataTransfer !== undefined){
         var data=ev.dataTransfer.getData("Text");
 
         $('#mainsection').scope().addItem(data, ev);
-    }catch(err){
-
     }
+
+    /*}catch(err){
+        console.log('test');
+        console.log(err.message);
+
+    } */
 
 
 }
@@ -44,4 +51,13 @@ function generateGuid()
         result = result + i;
     }
     return result
+}
+
+function getItemWithId(items, id){
+    for(var i in items){
+        if(items[i].id === id)
+            return items[i];
+    }
+
+    return undefined;
 }

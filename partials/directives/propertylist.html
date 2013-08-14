@@ -1,0 +1,41 @@
+<p class="mainview-properties-header">Properties</p>
+<div class="property-group">
+    <div ng-repeat="element in selectedForm" >
+        <div ng-switch on="element.widget">
+            <div ng-switch-when="read" class="controls controls-row">
+                <span class="add-on span2 property-float">{{element.label}}</span>
+                <input class="span3 property-float uneditable-input" type="text" ng-model="selectedItem[element.model]" ng-required="element.required"/>
+            </div>
+
+            <div ng-switch-when="text" class="controls controls-row">
+                <span class="add-on span2 property-float">{{element.label}}</span>
+                <input class="span3 property-float" type="text" ng-model="selectedItem[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem, element.model)"/>
+            </div>
+
+            <div ng-switch-when="select" class="controls controls-row">
+                <span class="add-on span2 property-float">{{element.label}}</span>
+                <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in element.options" ng-change="updateInput(selectedItem, element.model)"></select>
+            </div>
+
+            <div ng-switch-when="functionselect" class="controls controls-row">
+                <span class="add-on span2 property-float">{{element.label}}</span>
+                <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in selectedItem[element.options](selectedItem[element.observable])" ng-change="updateInput(selectedItem, element.model)"></select>
+            </div>
+
+            <div ng-switch-when="largetext" class="controls controls-row">
+                <span class="add-on span2 property-float">{{element.label}}</span>
+                <textarea class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem, element.model)"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-toolbar action-prop-btns">
+        <div class="btn-group">
+            <button class="btn btn-inverse" ng-repeat="button in actions" ng-click="button.click()">{{ button.label }}</button>
+        </div>
+    </div>
+
+    <div class="data-view-prop-btns">
+        <button class="btn btn-block btn-primary btn-large" ng-click="openItemEditor()">Settings</button>
+    </div>
+</div>

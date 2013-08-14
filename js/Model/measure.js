@@ -12,6 +12,7 @@ var ParameterType = "PARAMETER";
 var MeasureType = "MEASURE";
 var DataRequestType = "DATA_REQUEST";
 var ValueType = "VALUE";
+var EnvironmentVariableType = "ENVIRONMENTVARIABLE";
 var TriggerStartType = "TriggerStart";
 var TriggerStopType = "TriggerStop";
 var MeasureComputationType = "MeasureComputation";
@@ -35,6 +36,19 @@ var typeOptions = [
         name: "Measure"},
     {key:"boolean",
         name: "Boolean"}
+];
+
+var datatypeOptions = [
+    {key:"double",
+        name: "Double"},
+    {key:"int32",
+        name: "Integer"},
+    {key:"string",
+        name: "String"},
+    {key:"boolean",
+        name: "Boolean"},
+    {key:"complex",
+        name: "Complex Type"}
 ];
 
 var inputTypeOptions = [
@@ -83,6 +97,14 @@ var datasourceQueryTypeOptions = [
         name: "Interaction"}
 ]
 
+var displayFormatOptions = [
+    {key:"Standard",
+        name: "Standard"},
+    {key:"LatLong",
+        name: "Latitude Longitude"}
+
+]
+
 
 var modelIndex = 0;
 var modelIdPrefix = "measureModel";
@@ -98,6 +120,7 @@ function Location(x, y){
     var self = this;
     self.x = x;
     self.y = y;
+    return self;
 }
 
 function MeasureDefinition(){
@@ -114,7 +137,6 @@ function MeasureDefinition(){
     self.inputs = [];
     self.triggers = [];
     self.actions = [];
-    self.location = "";
 
     self.addProperty = function(property){
         self.properties.push(property);
@@ -170,7 +192,7 @@ function MeasureDefinition(){
 
 function MeasureTemplate(){
     var self = this;
-    self.id = GetModelId;
+    self.id = GetModelId();
     self.Guid = generateGuid();
     self.name = "";
     self.computation = null;
@@ -178,7 +200,17 @@ function MeasureTemplate(){
     self.properties = [];
     self.parameters = [];
     self.constants = [];
-    self.location = "";
+    self.computations = [];
+    self.environmentvars = [];
+    self.dataRequests = [];
+
+
+
+    self.timeFormat = '';
+    self.displayFormat = '';
+    self.precision = '';
+    self.units = '';
+    self.oneOff = '';
 
     self.addProperty = function(property){
         self.properties.push(property);
@@ -216,6 +248,18 @@ function MeasureTemplate(){
         }
     }
 
+
+    self.form = [
+        new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
+        new Form('Name', 'name', 'text', true, null, null),
+        new Form('Time Format', 'timeFormat', 'text', true, null, null),
+        new Form('Display Format', 'displayFormat', 'select', true, displayFormatOptions, null),
+        new Form('Units', 'units', 'text', true, null, null),
+        new Form('One Off', 'oneOff', 'select', true, booleanOptions, null),
+        new Form('Description', 'description', 'largetext', true, null, null)
+    ]
+
     return self;
 }
 
@@ -240,7 +284,7 @@ function Action(actionService){
     self.operator = "";
     self.name = "";
     self.inputs = [];
-    self.location = "";
+    self.plumbObject = new plumbObject(self);
 
     self.getActionOperators = function(item){
         return actionService.getActionOperators(item);
@@ -260,7 +304,7 @@ function Action(actionService){
 
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
-        new Form('Guid', 'Guid', 'text', false, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
         new Form('Name', 'name', 'text', true, null, null),
         new Form('Action Name', 'actionName', 'select', true, actionService.getActionNames(), null),
         new Form('Operator', 'operator', 'functionselect', true, 'getActionOperators', 'actionName')
@@ -290,12 +334,12 @@ function Parameter(){
     self.defaultValue = "";
     self.displayUnits = "";
     self.description = "";
-    self.location = "";
 
 
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
-        new Form('Guid', 'Guid', 'text', false, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
+        new Form('Name', 'name', 'text', false, null, null),
         new Form('Type', 'type', 'select', true, typeOptions, null),
         new Form('enumName', 'enumName', 'text', true, null, null),
         new Form('enumValues', 'enumValues', 'text', true, null, null),
@@ -310,6 +354,7 @@ function Parameter(){
 function Constant(){
     var self = this;
     self.id = GetModelId();
+    self.Guid = generateGuid();
     self.name = "";
     self.type = "";
     self.units = "";
@@ -318,6 +363,7 @@ function Constant(){
 
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
+        new Form('Guid', 'Guid', 'read', false, null, null),
         new Form('Name', 'name', 'text', false, null, null),
         new Form('Type', 'type', 'select', true, typeOptions, null),
         new Form('Units', 'units', 'text', true, null, null),
@@ -355,7 +401,7 @@ function Input(){
     return self;
 }
 
-function MeasureComputation(functionService, plumbService){
+function MeasureComputation(functionService){
     var self = this;
     self.operator = "";
     self.functionName = "";
@@ -363,9 +409,7 @@ function MeasureComputation(functionService, plumbService){
     self.operands = [];
     self.id = GetModelId();
     self.Guid = generateGuid();
-    self.functionPlugins = functionService;
-    self.plumbservice = plumbService;
-    self.location = "";
+
     self.getFunctionPluginOperators = function(item){
         return functionService.getFunctionPluginOperators(item);
     }
@@ -381,8 +425,6 @@ function MeasureComputation(functionService, plumbService){
             }
         }
     }
-
-    self.type = MeasureComputationType;
 
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
@@ -403,8 +445,6 @@ function EnvironmentVariable(){
     self.name = "";
     self.value = "";
 
-    self.location = "";
-
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
         new Form('Guid', 'Guid', 'read', false, null, null),
@@ -419,15 +459,19 @@ function DataRequest(dataSourceService){
     var self = this;
     self.id = GetModelId();
     self.Guid = generateGuid();
+    self.name = "";
+    self.parameters = [];
+    self.newParams = true;
     self.type = "";
     self.dataSourceRef = "";
     self.where = "";
     self.from ="";
-    self.select = "";
+    self.select = '';
+    self.selectItems = [];
     self.subscriptionType = "";
     self.units = "";
     self.limit = "";
-    self.location = "";
+
 
     self.getClasses = function(item){
         return dataSourceService.getClasses(item);
@@ -437,13 +481,70 @@ function DataRequest(dataSourceService){
         return dataSourceService.getProperties(item);
     }
 
+    self.addProperty = function(dataModelName, className, propName){
+        if(self.from !== className && self.selectItems.length> 0){
+            toastr.error("cannot add a property from class "+className+" when class "+self.from+" is already selected.");
+            return;
+        }
+
+        if(self.dataSourceRef !== dataModelName && self.selectItems.length> 0){
+            toastr.error("cannot add a property from data model "+dataModelName+" when data model "+self.dataSourceRef+" is already selected.");
+            return;
+        }
+
+        self.from = className;
+        self.dataSourceRef = dataModelName;
+        self.selectItems.push(propName);
+
+        updateSelect();
+
+    }
+
+    self.removeProperty = function(propName){
+        self.selectItems = self.selectItems.filter(function(item){
+            return item != propName;
+        });
+
+        if(self.selectItems.length === 0){
+            self.from = '';
+            self.dataSourceRef = '';
+        }
+
+        updateSelect();
+    }
+
+    function updateSelect(){
+        self.select = '';
+        for(var i in self.selectItems){
+            if(i > 0)
+                self.select += ', ';
+            self.select += self.selectItems[i];
+        }
+    }
+
+    self.addParameter = function(parameter){
+        self.parameters.push(parameter);
+        self.newParam = true;
+    }
+
+    self.removeParameter = function(id){
+        for(var i in self.parameters){
+            if(self.parameters[i].id == id){
+                self.parameters.splice(i, 1);
+            }
+        }
+        self.newParam = true;
+    }
+
 
     self.form = [
         new Form('ID', 'id', 'read', true, null, null),
         new Form('Guid', 'Guid', 'read', false, null, null),
-        new Form('Data Source', 'dataSourceRef', 'select', true, dataSourceService.getSourceNames(), null),
-        new Form('From', 'from', 'functionselect', true, 'getClasses', 'dataSourceRef'),
-        new Form('Select', 'select', 'functionselect', true, 'getProperties', 'from')
+        new Form('Name', 'name', 'text', false, null, null),
+        new Form('Data Source', 'dataSourceRef', 'read', true, null, null),
+        new Form('From', 'from', 'read', true, null, null),
+        new Form('Select', 'select', 'read', true, null, null),
+        new Form('Where', 'where', 'largetext', true, null, null)
     ]
 
     return self;

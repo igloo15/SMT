@@ -1,0 +1,17 @@
+<div  class="node">
+    <div id='header' class="node-header middlediv {{ class }}">
+        <div style="width: 95%; height:95%;">
+            <p ng-click='select()'>{{ object.type + ' : ' }} {{ object.name }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Full Name : {{ object.fullName }}</p>
+            <i class="icon-collapse icon-large pull-right" ng-click="collapse()" ng-show="isCollapsed"></i>
+            <i class="icon-collapse-top icon-large pull-right" ng-click="collapse()" ng-show="!isCollapsed"></i>
+        </div>
+
+    </div>
+
+    <div id="properties">
+
+    </div>
+    <div id="classes">
+
+    </div>
+</div>

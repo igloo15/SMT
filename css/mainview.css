@@ -5,7 +5,7 @@
 
 .mainview-sidebar{
     float: left;
-    width: 20%;
+    width: 15%;
     height: 100%;
     text-align: center;
 }
@@ -23,15 +23,20 @@
     width: 100%;
 }
 
+.component-box-outer{
+    width: 100%;
+    height: 75px;
+}
+
 .component-box{
     color: white;
-    font-size: 150%;
+
     background-color: blue;
     float: left;
-    margin: 4%;
+    margin: 3% 15%;
     border-radius: 5px;
-    width: 90%;
-    height: 100px;
+    width: 200px;
+    height: 75px;
 }
 
 .component-box-inner{
@@ -43,7 +48,7 @@
 
 .mainview-workspace{
     float: left;
-    width: 60%;
+    width: 65%;
     height: 100%;
     background-color: #ffffff;
     border-radius: 5px;
@@ -54,7 +59,7 @@
 
 .mainview-properties{
     float: left;
-    width: 20%;
+    width: 19%;
     height: 100%;
 }
 
@@ -70,8 +75,9 @@
 .property-group{
     margin: 0 auto;
     width: 100%;
-    height: 100%;
+    height: 95%;
     margin-top: 20px;
+    position:relative;
 }
 
 .property-float{
@@ -79,15 +85,172 @@
 }
 
 
-.title {
-    font-size: 50%;
-    padding: 10px;
-    cursor: move;
+.datarequest-group{
+    width: 100%;
+    height: 64%;
+    float: left;
+    border:2px solid lightseagreen;
+    border-radius: 3px;
+    box-sizing: border-box;
 }
 
-.connect {
+.datarequest-group-inner{
     width: 100%;
-    height: 20px;
-    background-color: white;
-    cursor: pointer;
+    height: 72%;
+    float: left;
+    overflow: auto;
+}
+
+.data-view{
+    width:78%;
+    margin-left:10px;
+}
+
+.data-view > hr{
+    margin:0px;
+    margin-left:4px;
+    margin-right:4px;
+    border: 2px solid black;
+}
+
+
+.data-view-requests{
+    overflow: auto;
+    width: 100%;
+    height: 46%;
+    padding:10px;
+}
+
+.data-view-model{
+
+    width: 100%;
+    height: 52%;
+    position: relative;
+ }
+
+.data-view-model-btns{
+    position: absolute;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+
+.data-view-model-inner{
+    overflow: auto;
+    width: 99%;
+    height: 90%;
+    margin-right: 0px;
+}
+
+.data-view-prop-btns{
+    margin:10px;
+    width:100%;
+    position:absolute;
+    bottom:0px;
+    left:0px;
+}
+
+.action-prop-btns{
+    margin:10px;
+    width:100%;
+    position:absolute;
+    bottom:50px;
+    left:0px;
+}
+
+.node{
+    margin-top: 10px;
+    margin-bottom:10px;
+    margin-left:15px;
+
+}
+
+.node-header{
+    background-color: grey;
+    height:25px;
+    color:white;
+}
+
+.node-header > div > p{
+    margin-top: 1px;
+    width:80%;
+    float:left;
+}
+
+.node-header > div > i{
+    margin-top:3px;
+}
+
+.not-selectable{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.data-request-modal-body{
+    height:650px;
+    max-height: 650px;
+}
+
+.data-request-modal-body-inner{
+    width: 100%;
+    height: 70%;
+    float: left;
+    border:2px solid lightseagreen;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.input-wrapper{
+    width: 100%;
+    height: 30px;
+}
+
+.input-middle{
+    position: relative;
+    display: block !important;
+    margin : 0 auto;
+}
+
+.data-view-request-area{
+    position: relative;
+    height: 100%;
+    width: 49%;
+}
+
+.data-view-divider{
+    border: 1px solid black;
+    background-color: black;
+    width: 1px;
+    height: 99%;
+}
+
+.data-view-request-box{
+    height: 100%;
+    width: 100%;
+}
+
+.propClass{
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, green 15%, green 85%, white 100%);
+}
+
+.dataModelClass{
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, grey 15%, grey 85%, white 100%);
+}
+
+.classClass{
+    background-image: -webkit-linear-gradient(top, #FFFFFF 0%, blue 15%, blue 85%, white 100%);
+}
+
+.data-view-parameter-box{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin-left: 10px;
 }

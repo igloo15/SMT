@@ -7,7 +7,7 @@
  */
 
 'use strict'
-app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumbService', 'functionService', 'dataService', 'actionService', function($scope, $compile, measureService, plumbService, functionService, dataService, actionService){
+app.controller('definitionCtrl', ['$scope', 'measureService', 'plumbServiceNew', 'functionService', 'dataService', 'actionService', function($scope, measureService, plumbService, functionService, dataService, actionService){
     /*$("#panArea").panzoom({
         $zoomIn: $(".zoom-in"),
         $zoomOut: $(".zoom-out"),
@@ -37,13 +37,13 @@ app.controller('definitionCtrl', ['$scope', '$compile', 'measureService', 'plumb
         var item;
         var location = new Location(ev.pageX, ev.pageY);
         if(data == MeasureComputationType){
-            item = measureService.createComputation($compile, $scope, location);
+            item = measureService.createComputation($scope, location);
         }else if(data == ConstantType){
-            item = measureService.createConstant($compile, $scope, location);
+            item = measureService.createConstant($scope, location);
         }else if(data == ParameterType){
-            item = measureService.createParameter($compile, $scope, location);
+            item = measureService.createParameter($scope, location);
         }else if(data == DataRequestType){
-            item = measureService.createDataRequest($compile, $scope, location);
+            item = measureService.createDataRequest($scope, location);
         }
 
 

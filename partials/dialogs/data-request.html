@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h3>I'm a modal!</h3>
+</div>
+<div class="modal-body data-request-modal-body">
+    <div class="data-request-modal-body-inner">
+        <p class="mainview-sidebar-header">Load a Data Request</p>
+        <hr/>
+        <div class="input-wrapper">
+            <input type="text" ng-model="searchText" class="input-medium search-query input-middle">
+        </div>
+        <hr/>
+        <div class="datarequest-group-inner">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-repeat="dr in dataRequests | filter:findDataRequest" ng-click="selectDR(dr)" ng-class="{'active':isActive(dr)}">
+                    <a href="#/data"><span>{{ dr.name }}</span> <span>From: {{ dr.from }}</span> <span>Select: {{ dr.select }}</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning cancel" ng-click="close()">Cancel</button>
+</div>
