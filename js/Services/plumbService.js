@@ -406,11 +406,12 @@ app.service('plumbServiceNew', function(){
         return item;
     }
 
-    service.createSoleSourceEndpoint = function(maxConnections){
-        return new service.createSourceEndpoint(0.5, 1.0, maxConnections);
+    service.createSoleSourceEndpoint = function(maxConnections, scope){
+        return new service.createSourceEndpoint(0.5, 1.0, maxConnections, scope);
     }
 
-    service.createSourceEndpoint = function(x, y, maxConnections){
+    service.createSourceEndpoint = function(x, y, maxConnections, scope){
+        if(typeof(scope) === 'undefined') scope = 'inputsource';
         if(typeof(maxConnections)==='undefined') maxConnections = -1;
 
         var self = this;
@@ -420,7 +421,7 @@ app.service('plumbServiceNew', function(){
         self.paintStyle = { fillStyle:color, opacity:0.5, lineWidth: 3, strokeStyle:'#056' };
         self.hoverPaintStyle = {strokeStyle:'#dbe300'};
         self.isSource = true;
-        self.scope = 'inputsource';
+        self.scope = scope;
         self.connectorStyle = { strokeStyle:color, lineWidth:4 };
         self.connector = "StateMachine";
         self.isTarget = false;
@@ -470,7 +471,7 @@ app.service('plumbServiceNew', function(){
         self.anchor = [1.0, 0.5, 0, 1, 0, 0];
         self.paintStyle = { width:20, height:20, fillStyle:color, opacity:0.5, strokeStyle:'black', lineWidth:2 };
         self.isSource = false;
-        self.scope = 'inputsource';
+        self.scope = 'trigger';
         self.connectorStyle = { strokeStyle:color, lineWidth:4 };
         self.connector = "Straight";
         self.isTarget = true;
@@ -496,7 +497,7 @@ app.service('plumbServiceNew', function(){
         self.anchor = [0.0, 0.5, 0, 1, 0, 0];
         self.paintStyle = { width:20, height:20, fillStyle:color, opacity:0.5, strokeStyle:'black', lineWidth:2 };
         self.isSource = false;
-        self.scope = 'inputsource';
+        self.scope = 'action';
         self.connectorStyle = { strokeStyle:color, lineWidth:4 };
         self.connector = "Straight";
         self.isTarget = true;
@@ -544,7 +545,17 @@ app.service('plumbServiceNew', function(){
 
         plumbObj.removeTargetEndpoints = function(type){
             plumbObj.endpoints = plumbObj.endpoints.filter(function(item){
+                if(item.type === type){
+                    plumbObj.removeConnection(item)
+                    jsPlumb.deleteEndpoint(item.endpoint);
+                }
                 return item.type !== type;
+            })
+        }
+
+        plumbObj.removeConnection = function(endpoint){
+            plumbObj.connections = plumbObj.connections.filter(function(item){
+                return item.target === endpoint;
             })
         }
 
@@ -617,6 +628,7 @@ app.service('plumbServiceNew', function(){
         plumbConn.target = target;
         plumbConn.targetEndpoint = targetEndpoint;
         plumbConn.connection = conn;
+
         return plumbConn;
     }
 

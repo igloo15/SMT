@@ -6,18 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 
-app.service('actionService', function(){
+app.service('actionService', function(smtService){
     var self = this;
     self.actionPlugins = {
-        measureCueAction:{
-            name: 'Measure Cueing Action',
-            operators:[
-                'Remote',
-                'Local'
-            ]
-        }
 
     };
+
+    smtService.getActionPluginNames().success(function(data, status, headers, config){
+        for(var i in data){
+            var plugName = data[i];
+            var newPlugin = new actionPlugin(plugName);
+            self.actionPlugins[plugName]=newPlugin;
+        }
+        console.log(data);
+    })
+        .error(function(data, status, headers, config){
+            toastr.error('Could not connect to function plugin service');
+        });
 
     self.getActionPlugins = function(){
         return self.actionPlugins;
@@ -42,6 +47,19 @@ app.service('actionService', function(){
         }
 
         return items;
+    }
+
+    function actionPlugin(name){
+        var actionPlug = this;
+        actionPlug.name = name;
+        smtService.getFunctionPluginOperators(name).success(function(data, status, headers, config){
+            actionPlug.operators = data;
+        })
+        .error(function(data, status, headers, config){
+            toastr.error('could not get operators for function plugin '+actionPlug.name);
+        });
+
+        return actionPlug;
     }
 
 

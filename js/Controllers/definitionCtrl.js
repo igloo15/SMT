@@ -16,7 +16,7 @@ app.controller('definitionCtrl', ['$scope', 'measureService', 'plumbServiceNew',
             var item;
             var location = new Location(event.pageX, event.pageY);
 
-            if($scope.dropItem instanceof MeasureTemplate){
+            if($scope.dropItem instanceof MeasureTemplateHeader){
                 item = measureService.createMeasureDefinition($scope.dropItem);
 
             }else{

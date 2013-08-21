@@ -233,7 +233,7 @@ app.directive("measuredefinition", function(plumbServiceNew){
                     var endpointSettings = new plumbServiceNew.createInputEndpoints(offset, 0.0, 1);
                     scope.object.plumbObject.addTargetEndpoint(endpointSettings, TARGET_INPUT_TYPE);
                 }
-                scope.object.newParam = false;
+                scope.object.systemMeasureTemplate.newParam = false;
             }
             scope.object.plumbObject.elem = element;
             scope.object.plumbObject.redraw();

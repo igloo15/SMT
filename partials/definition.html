@@ -6,7 +6,7 @@
 
             </component>
             <div class="datarequest-group">
-                <p class="mainview-sidebar-header">Data Requests</p>
+                <p class="mainview-sidebar-header">Templates</p>
                 <hr/>
                 <input type="text" ng-model="searchText" class="input-medium search-query">
                 <hr/>
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <div class="mainview-workspace not-selectable" ondrop="drop(event)" ondragover="allowDrop(event)" >
+    <div class="mainview-workspace not-selectable" ng-click="callSelectItem(defObject)">
 
         <parameter ng-repeat="param in defObject.parameters" object="param" select="callSelectItem(item)" class="jsplumb-box"></parameter>
         <constant ng-repeat="const in defObject.constants" object="const" select="callSelectItem(item)" class="jsplumb-box"></constant>

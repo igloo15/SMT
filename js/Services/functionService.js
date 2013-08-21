@@ -7,25 +7,21 @@
  */
 
 
-app.service('functionService', function(){
+app.service('functionService', function(smtService){
     var self = this;
-    self.functionPlugins = {
-        math:{
-            name: 'math',
-            operators:[
-             'Add',
-             'Minus',
-             'Multiply',
-             'Divide',
-             'Absolute',
-             'AddAll',
-             'Identity',
-             'SetInsert',
-             'ListInsert',
-         ]
-        }
+    self.functionPlugins = {};
 
-    };
+    smtService.getFunctionPluginNames().success(function(data, status, headers, config){
+        for(var i in data){
+            var plugName = data[i];
+            var newPlugin = new functionPlugin(plugName);
+            self.functionPlugins[plugName]=newPlugin;
+        }
+        console.log(data);
+    })
+    .error(function(data, status, headers, config){
+        toastr.error('Could not connect to function plugin service');
+    });
 
     self.getFunctionPlugins = function(){
         return self.functionPlugins;
@@ -50,6 +46,19 @@ app.service('functionService', function(){
         }
 
         return items;
+    }
+
+    function functionPlugin(name){
+        var functionPlug = this;
+        functionPlug.name = name;
+        smtService.getFunctionPluginOperators(name).success(function(data, status, headers, config){
+            functionPlug.operators = data;
+        })
+        .error(function(data, status, headers, config){
+            toastr.error('could not get operators for function plugin '+functionPlug.name);
+        });
+
+        return functionPlug;
     }
 
 

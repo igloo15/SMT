@@ -7,7 +7,7 @@
  */
 
 
-app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'functionService', 'dataService', function($compile, plumbService, actionService, functionService, dataService){
+app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'functionService', 'smtService', function($compile, plumbService, actionService, functionService, smtService){
     var self = this;
 
     self.measureTemplates = [];
@@ -19,7 +19,6 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.plumbservice = plumbService;
     self.actionservice = actionService;
     self.functionservice = functionService;
-    self.dataservice = dataService;
 
     self.compile = $compile;
 
@@ -34,6 +33,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.setMeasureTemplate = function(template){
         self.measureTemplate = template;
         self.currentView = template;
+        smtService.saveFileToXml(self.measureTemplate.item, '');
     }
 
     self.setDefObject = function(defObject){
@@ -62,7 +62,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     }
 
     self.createDefFile = function(){
-        var defTemp = new DefinitionFile();
+        var defTemp = new MeasureFile();
         self.defObjects.push(defTemp);
 
         return defTemp;
@@ -70,7 +70,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
 
     self.createMeasureTemplate = function(){
 
-        var newMeasure = new MeasureTemplate();
+        var newMeasure = new MeasureTemplateHeader();
         self.measureTemplates.push(newMeasure);
 
 
@@ -81,7 +81,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
 
 
     self.createMeasureDefinition = function(template){
-        var item = new MeasureDefinition(template);
+        var item = new MeasureDefinitionHeader(template);
 
         item.plumbObject = plumbService.createObject(item);
         item.plumbObject.setup = function(){
@@ -100,7 +100,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
         checkMeasure();
 
 
-        var item = new Parameter();
+        var item = new ParameterHeader();
 
         item.plumbObject = plumbService.createObject(item);
 
@@ -116,7 +116,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
         checkMeasureTemplate();
 
 
-        var item = new MeasureComputation(self.functionservice);
+        var item = new MeasureComputationHeader(self.functionservice);
         item.plumbObject = plumbService.createObject(item);
 
         item.plumbObject.setup = function(){
@@ -134,7 +134,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.createConstant = function(){
         checkMeasure();
 
-        var item = new Constant();
+        var item = new ConstantHeader();
 
         item.plumbObject = plumbService.createObject(item);
 
@@ -149,7 +149,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.createDataRequest = function(){
         checkMeasureTemplate();
 
-        var item = new DataRequest(self.dataservice);
+        var item = new DataRequestHeader();
 
         item.plumbObject = plumbService.createObject(item);
 
@@ -166,7 +166,7 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.createEnvironmentVariable = function(){
         checkMeasureTemplate();
 
-        var item = new EnvironmentVariable();
+        var item = new EnvironmentVariableHeader();
         item.plumbObject = plumbService.createObject(item);
 
         item.plumbObject.setup = function(){
@@ -192,10 +192,10 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     self.createAction = function(){
         checkMeasureDefinition();
 
-        var item = new Action(actionService);
+        var item = new ActionHeader(actionService);
         item.plumbObject = plumbService.createObject(item);
         item.plumbObject.setup = function(){
-            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1));
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(-1, 'action'));
             item.plumbObject.addTargetEndpoint(new plumbService.createInputEndpoints(0.5, 0.0, -1));
 
             self.currentView.actions.push(item);
@@ -206,10 +206,11 @@ app.service('measureService',['$compile','plumbServiceNew', 'actionService', 'fu
     }
 
     self.createMeasureTrigger = function(){
-        var item = new MeasureTrigger();
+        var item = new MeasureTriggerHeader();
         item.plumbObject = plumbService.createObject(item);
         item.plumbObject.setup = function(){
-            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(1));
+            item.plumbObject.setSourceEndpoint(new plumbService.createSoleSourceEndpoint(1, 'trigger'));
+            item.plumbObject.addTargetEndpoint(new plumbService.createInputEndpoints(0.5, 0.0, 1));
             self.currentView.triggers.push(item);
         }
 

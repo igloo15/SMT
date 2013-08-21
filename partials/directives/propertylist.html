@@ -4,27 +4,27 @@
         <div ng-switch on="element.widget">
             <div ng-switch-when="read" class="controls controls-row">
                 <span class="add-on span2 property-float">{{element.label}}</span>
-                <input class="span3 property-float uneditable-input" type="text" ng-model="selectedItem[element.model]" ng-required="element.required"/>
+                <input class="span3 property-float uneditable-input" type="text" ng-model="selectedItem.item[element.model]" ng-required="element.required"/>
             </div>
 
             <div ng-switch-when="text" class="controls controls-row">
                 <span class="add-on span2 property-float">{{element.label}}</span>
-                <input class="span3 property-float" type="text" ng-model="selectedItem[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem, element.model)"/>
+                <input class="span3 property-float" type="text" ng-model="selectedItem.item[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem.item, element.model)"/>
             </div>
 
             <div ng-switch-when="select" class="controls controls-row">
                 <span class="add-on span2 property-float">{{element.label}}</span>
-                <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in element.options" ng-change="updateInput(selectedItem, element.model)"></select>
+                <select class="span3 property-float" ng-model="selectedItem.item[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in element.options" ng-change="updateInput(selectedItem.item, element.model)"></select>
             </div>
 
             <div ng-switch-when="functionselect" class="controls controls-row">
                 <span class="add-on span2 property-float">{{element.label}}</span>
-                <select class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in selectedItem[element.options](selectedItem[element.observable])" ng-change="updateInput(selectedItem, element.model)"></select>
+                <select class="span3 property-float" ng-model="selectedItem.item[element.model]" ng-required="element.required" ng-options="o.key as o.name for o in selectedItem.item[element.options](selectedItem.item[element.observable])" ng-change="updateInput(selectedItem.item, element.model)"></select>
             </div>
 
             <div ng-switch-when="largetext" class="controls controls-row">
                 <span class="add-on span2 property-float">{{element.label}}</span>
-                <textarea class="span3 property-float" ng-model="selectedItem[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem, element.model)"></textarea>
+                <textarea class="span3 property-float" ng-model="selectedItem.item[element.model]" ng-required="element.required" ng-change="updateInput(selectedItem.item, element.model)"></textarea>
             </div>
         </div>
     </div>
