@@ -59,7 +59,6 @@ app.directive("datadirective", function($compile, dataService){
             }else{
                 $scope.class = 'dataModelClass';
             }
-
         },
         link: function(scope, element, attrs){
             //element.attr('id', scope.object.fullName);

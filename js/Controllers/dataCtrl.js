@@ -129,11 +129,6 @@ app.controller('dataCtrl', ['$scope', 'dataService', 'measureService', '$dialog'
                 //$scope.dataRequest = item;
             },
             label:'New Data Request'
-        },
-        {
-            click:function()
-            {console.log('click 2');},
-            label:'Click 2'
         }
     ];
 

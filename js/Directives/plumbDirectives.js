@@ -19,6 +19,7 @@ app.directive("measurecomputation", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -46,6 +47,7 @@ app.directive("constant", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -72,6 +74,7 @@ app.directive("parameter", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -98,6 +101,7 @@ app.directive("datarequest", function(plumbServiceNew){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             if(scope.object.newParam){
@@ -140,6 +144,7 @@ app.directive("environmentvariable", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -166,6 +171,7 @@ app.directive("measuretrigger", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -192,6 +198,7 @@ app.directive("action", function(){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             scope.object.plumbObject.elem = element;
@@ -218,6 +225,7 @@ app.directive("measuredefinition", function(plumbServiceNew){
             $scope.callSelectItem = function(){
                 $scope.select({item: $scope.object});
             }
+            $scope.hpmlObject = $scope.object.hpmlObject;
         },
         link: function(scope, element, attrs){
             if(scope.object.systemMeasureTemplate.newParam){

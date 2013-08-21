@@ -16,7 +16,7 @@ app.controller('templateCtrl', ['$scope', 'measureService', 'plumbServiceNew', '
             var item;
             var location = new Location(event.pageX, event.pageY);
 
-            if($scope.dropItem instanceof DataRequest){
+            if($scope.dropItem.hpmlObject instanceof DataRequest){
                 item = $scope.dropItem;
             }else{
                 item = measureService.createItem($scope.dropItem.id);
